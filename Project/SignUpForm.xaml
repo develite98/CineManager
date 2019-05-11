@@ -1,0 +1,160 @@
+﻿<Window x:Class="ProjectVideo.SignUpForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectVideo"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterOwner"
+        Title="Sign Up" Height="600" Width="400">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/br5.jpg"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <uc:ControlBars Grid.Row="0">
+        </uc:ControlBars>
+        <TabControl Margin="5" Grid.Row="1">
+            <TabItem Header="Step 1" Width="120">
+                <materialDesign:Card Margin="35" Height="500">
+                    <StackPanel>
+                        <Grid Width="auto" Height="400">
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Margin" Value="13"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <TextBox materialDesign:HintAssist.Hint="User Name"
+                                 materialDesign:HintAssist.HintOpacity="0.8"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Width="250"
+                                 Height="50"
+                                 Grid.Row="0"/>
+                            <PasswordBox x:Name="PasswordBox"
+                                     materialDesign:HintAssist.Hint="Password"
+                                     materialDesign:HintAssist.HintOpacity="0.8"
+                                     Width="250"
+                                     Height="50"
+                                     Grid.Row="1"/>
+                            <PasswordBox x:Name="PasswordBox2"
+                                     materialDesign:HintAssist.Hint="Rewrite Password"
+                                     materialDesign:HintAssist.HintOpacity="0.8"
+                                     Width="250"
+                                     Height="50"
+                                     Grid.Row="2"/>
+                            <TextBox materialDesign:HintAssist.Hint="Email"
+                                 materialDesign:HintAssist.HintOpacity="0.8"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Width="250"
+                                 Height="50"
+                                 Grid.Row="3"/>
+                            <Button     Grid.Row="4"
+                                    Width="100"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    Background="DarkGray"
+                                    Margin="0"
+                                        Click="Button_Click">Next Step</Button>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </TabItem>
+            <TabItem Header="Step 2" Name="Tab2" Width="120" Height="40" Visibility="Hidden">
+                <materialDesign:Card Margin="35" Height="500">
+                    <StackPanel>
+                        <Grid Width="auto" Height="400">
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Margin" Value="13"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <TextBox materialDesign:HintAssist.Hint="Name"
+                                 materialDesign:HintAssist.HintOpacity="0.8"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Width="250"
+                                 Height="50"
+                                 Grid.Row="0"/>
+                            <TextBox materialDesign:HintAssist.Hint="Phone Number"
+                                 materialDesign:HintAssist.HintOpacity="0.8"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Width="250"
+                                 Height="50"
+                                 Grid.Row="1"/>
+                            <DatePicker Grid.Row="2"
+                                  Width="250"
+                                  materialDesign:HintAssist.Hint="Pick Date"
+                                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />          
+                            <TextBox materialDesign:HintAssist.Hint="Visa"
+                                 materialDesign:HintAssist.HintOpacity="0.8"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Width="250"
+                                 Height="50"
+                                 Grid.Row="3"/>
+                            <Button     Grid.Row="4"
+                                    Width="100"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    Background="DarkGray"
+                                    Margin="0"
+                                    Click="Button_Click_1">Next Step</Button>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </TabItem>
+            <TabItem Header="Step 3" Name="Tab3" Width="120" Visibility="Hidden">
+                <StackPanel>
+                    <GroupBox Height="300" BorderBrush="AliceBlue"
+                          Header="Lincense"
+                          HorizontalAlignment="Center"
+                          Style="{DynamicResource MaterialDesignGroupBox}"
+                          Margin="15"
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                          BorderThickness="1">
+                        <TextBlock Margin="6,6,6,6"
+                                    TextWrapping="Wrap">
+                              Chấp hành đúng quy dịnh abcxyz . . .
+                        </TextBlock>
+                    </GroupBox>
+                    <CheckBox HorizontalAlignment="Center">
+                        I have read and accept the lincemse
+                    </CheckBox>
+                    <Button Margin="5"
+                            Background="DarkGray"
+                            HorizontalAlignment="Center" >
+                        Sign Up
+                    </Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Window>

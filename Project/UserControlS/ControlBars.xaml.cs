@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProjectVideo
+namespace ProjectVideo.UserControlS
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for ControlBars.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class ControlBars : UserControl
     {
-        public Login()
+        public ControlBars()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SignUpForm sn = new SignUpForm();
-            sn.Show();
-
+            
         }
     }
 }

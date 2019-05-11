@@ -15,20 +15,25 @@ using System.Windows.Shapes;
 namespace ProjectVideo
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for SignUpForm.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class SignUpForm : Window
     {
-        public Login()
+        public SignUpForm()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SignUpForm sn = new SignUpForm();
-            sn.Show();
+            Tab2.IsSelected = true;
+            Tab2.Visibility = Visibility.Visible;
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Tab3.IsSelected = true;
+            Tab3.Visibility = Visibility.Visible;
         }
     }
 }

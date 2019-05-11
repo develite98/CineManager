@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ProjectVideo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
@@ -14,11 +15,20 @@
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
         ResizeMode="NoResize"
-        WindowStyle="ToolWindow"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="Login" Height="500" Width="800">
     <Grid>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <uc:ControlBars>
+                </uc:ControlBars>
+            </Grid>
+        <Grid Grid.Row="1">
             <Grid.Background>
                 <ImageBrush ImageSource="/Resources/br3.jpg"
                             />
@@ -27,10 +37,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Margin="15 40 0 0" Grid.Column="0" Width="auto">
+            <!--<StackPanel Margin="15 40 0 0" Grid.Column="0" Width="auto">
                 <TextBlock FontSize="30" FontWeight="ExtraBlack">PROFESSTIONAL</TextBlock>
                 <TextBlock FontSize="30" FontWeight="ExtraBlack" HorizontalAlignment="Right">MOVIE PLAYER</TextBlock>
-            </StackPanel>
+            </StackPanel>-->
             <materialDesign:Card  Grid.Column="1" Height="300" Width="250" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 30 25 0">
                 <materialDesign:Card.Background>
                     <ImageBrush ImageSource="/Resources/br5.jpg"></ImageBrush>
@@ -68,9 +78,9 @@
                         <Grid Grid.Row="3" Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <!--<ColumnDefinition/>-->
                             </Grid.ColumnDefinitions>
-                            <Button
+                            <!--<Button
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                 Width="100"
@@ -78,11 +88,10 @@
                                 FontSize="12"
                                 Background="DarkGray">
                                 Sign Up
-                            </Button>
+                            </Button>-->
                             <Button
                                 Width="100"
                                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                ToolTip="Resource name: MaterialDesignRaisedButton"
                                 Grid.Column="0"
                                 FontSize="12"
                                 Background="DarkGray"
@@ -90,8 +99,11 @@
 
                         </Grid>
                     </Grid>
+                        <Label HorizontalAlignment="Center" FontSize="10">Don't have account ?</Label>
+                        <Button Content="Sign Up For Free" Margin="25,0" Click="Button_Click"></Button>
                 </StackPanel>
             </materialDesign:Card>
+        </Grid>
         </Grid>
     </Grid>
 </Window>
