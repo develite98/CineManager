@@ -17,7 +17,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Login" Height="500" Width="800">
+        Title="Login" Height="500" Width="800"
+        DataContext="{StaticResource LoginVM}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -25,8 +26,7 @@
                 <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <uc:ControlBars>
-                </uc:ControlBars>
+                <uc:ControlBars></uc:ControlBars>
             </Grid>
         <Grid Grid.Row="1">
             <Grid.Background>
@@ -63,7 +63,8 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  Width="250"
                                  Height="50"
-                                 Grid.Row="0"/>
+                                 Grid.Row="0"
+                                 Text="{Binding UserName}"/>
                         <PasswordBox x:Name="PasswordBox"
                                      materialDesign:HintAssist.Hint="Password"
                                      materialDesign:HintAssist.HintOpacity="0.8"
@@ -95,12 +96,13 @@
                                 Grid.Column="0"
                                 FontSize="12"
                                 Background="DarkGray"
+                                Command="{Binding LoginCommand}"
                                 Margin="0">Sign In</Button>
 
                         </Grid>
                     </Grid>
                         <Label HorizontalAlignment="Center" FontSize="10">Don't have account ?</Label>
-                        <Button Content="Sign Up For Free" Margin="25,0" Click="Button_Click"></Button>
+                        <Button Content="Sign Up For Free" Margin="25,0"></Button>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

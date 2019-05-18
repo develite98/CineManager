@@ -15,7 +15,6 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource MainVM}"
         Title="MainWindow" Height="350" Width="525">
-
     <Grid>
 
 
