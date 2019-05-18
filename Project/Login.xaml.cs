@@ -23,12 +23,5 @@ namespace ProjectVideo
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SignUpForm sn = new SignUpForm();
-            sn.Show();
-
-        }
     }
 }

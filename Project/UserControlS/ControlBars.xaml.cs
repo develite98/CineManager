@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,12 @@ namespace ProjectVideo.UserControlS
     /// </summary>
     public partial class ControlBars : UserControl
     {
+        public ControlBarViewModel Viewmodel { get; set; }
+
         public ControlBars()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+            this.DataContext = Viewmodel = new ControlBarViewModel();
         }
     }
 }
