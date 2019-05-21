@@ -13,6 +13,7 @@ namespace ProjectVideo.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
+        public bool isLogin = false;
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
 
@@ -34,19 +35,22 @@ namespace ProjectVideo.ViewModel
                 return;
             // check admin
             int admin = DataProvider.Ins.DB.Users.Where(us => us.userName == UserName && us.userPassword == Password && us.isAdmin == true).Count();
+            //
+            // check user
             int user = DataProvider.Ins.DB.Users.Where(us => us.userName == UserName && us.userPassword == Password).Count();
-            if (admin > 0)
+            //
+            if (admin > 0) // module Admin
             {
                 MessageBox.Show("Admin");
             }
-            else if (user > 0)
+            else if (user > 0) // module User
             {
-                p.Hide();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ShowDialog();
+                isLogin = true;
+                p.Close();
             }
             else
             {
+                isLogin = false;
                 MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

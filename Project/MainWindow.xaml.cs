@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace ProjectVideo
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public MainWindow(string UserName)
+        {
+            InitializeComponent();
+            if (UserName != null)
+            {
+                txtModule.Text = UserName;
+                btnLi_Lo.Content = "Logout";
+            }
         }
     }
 }
