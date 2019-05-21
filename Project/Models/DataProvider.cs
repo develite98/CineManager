@@ -8,7 +8,7 @@ namespace ProjectVideo.Models
 {
     public class DataProvider
     {
-        public static DataProvider ins;
+        private static DataProvider ins;
         public static DataProvider Ins { get { if (ins == null) ins = new DataProvider(); return ins; } set { ins = value; } }
 
         public VideoSupplyManagementEntities DB { get; set; }

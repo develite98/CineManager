@@ -7,6 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
@@ -18,7 +19,8 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="Login" Height="500" Width="800"
-        DataContext="{StaticResource LoginVM}">
+        DataContext="{StaticResource LoginVM}"
+        x:Name="LoginView">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -65,12 +67,18 @@
                                  Height="50"
                                  Grid.Row="0"
                                  Text="{Binding UserName}"/>
-                        <PasswordBox x:Name="PasswordBox"
+                            <PasswordBox x:Name="PasswordBox"
                                      materialDesign:HintAssist.Hint="Password"
                                      materialDesign:HintAssist.HintOpacity="0.8"
                                      Width="250"
                                      Height="50"
-                                     Grid.Row="1"/>
+                                     Grid.Row="1">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
                         <CheckBox Grid.Row="2"
                                   Margin="5"
                                   Style="{StaticResource MaterialDesignCheckBox}">
@@ -97,6 +105,7 @@
                                 FontSize="12"
                                 Background="DarkGray"
                                 Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=LoginView}"
                                 Margin="0">Sign In</Button>
 
                         </Grid>
