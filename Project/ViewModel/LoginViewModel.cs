@@ -16,6 +16,7 @@ namespace ProjectVideo.ViewModel
         public bool isLogin = false;
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
+        public ICommand SignUpFormCommand { get; set; }
 
         private string userName;
         public string UserName { get { return userName; } set { userName = value; OnPropertyChanged(); } }
@@ -27,6 +28,7 @@ namespace ProjectVideo.ViewModel
         {
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = MD5Hash(Base64Encode(p.Password)); });
+            SignUpFormCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { MoveToSignUpForm(p); });
         }
 
         private void Login(Window p)
@@ -48,10 +50,10 @@ namespace ProjectVideo.ViewModel
                 isLogin = true;
                 p.Close();
             }
-            else
+            else // 
             {
                 isLogin = false;
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wrong account or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -72,6 +74,16 @@ namespace ProjectVideo.ViewModel
                 hash.Append(bytes[i].ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        private void MoveToSignUpForm(Window p)
+        {
+            if (p == null)
+                return;
+            p.Hide();
+            SignUp signUpForm = new SignUp();
+            signUpForm.ShowDialog();
+            p.Close();
         }
     }
 }
