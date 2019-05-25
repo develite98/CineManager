@@ -15,7 +15,7 @@
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Title="Sign Up" Height="600" Width="400">
     <Grid>
         <Grid.Background>

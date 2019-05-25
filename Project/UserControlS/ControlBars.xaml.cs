@@ -28,5 +28,7 @@ namespace ProjectVideo.UserControlS
             InitializeComponent();
             this.DataContext = Viewmodel = new ControlBarViewModel();
         }
+
+       
     }
 }
