@@ -11,11 +11,12 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="birthday" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="userName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="userPassword" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="phoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pay" Type="nvarchar" MaxLength="255" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="VideoKind">
@@ -66,11 +67,12 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="birthday" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="userPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="VideoKind">
@@ -128,6 +130,7 @@
                 <ScalarProperty Name="userPassword" ColumnName="userPassword" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
               </MappingFragment>
             </EntityTypeMapping>

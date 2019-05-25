@@ -17,9 +17,9 @@ namespace ProjectVideo
     /// <summary>
     /// Interaction logic for SignUpForm.xaml
     /// </summary>
-    public partial class SignUpForm : Window
+    public partial class SignUp : Window
     {
-        public SignUpForm()
+        public SignUp()
         {
             InitializeComponent();
         }
@@ -34,6 +34,14 @@ namespace ProjectVideo
         {
             Tab3.IsSelected = true;
             Tab3.Visibility = Visibility.Visible;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var check = sender as CheckBox;
+            if (check.IsChecked == false)
+                return;
+            btnSignUp.IsEnabled = true;
         }
     }
 }

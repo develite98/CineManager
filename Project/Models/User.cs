@@ -16,11 +16,12 @@ namespace ProjectVideo.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public System.DateTime birthday { get; set; }
+        public string birthday { get; set; }
         public string userName { get; set; }
         public string userPassword { get; set; }
         public string Email { get; set; }
         public string phoneNumber { get; set; }
+        public string pay { get; set; }
         public bool isAdmin { get; set; }
     }
 }

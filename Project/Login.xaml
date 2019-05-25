@@ -111,7 +111,10 @@
                         </Grid>
                     </Grid>
                         <Label HorizontalAlignment="Center" FontSize="10">Don't have account ?</Label>
-                        <Button Content="Sign Up For Free" Margin="25,0"></Button>
+                        <Button Content="Sign Up For Free" Margin="25,0"
+                                Command="{Binding SignUpFormCommand}"
+                                CommandParameter="{Binding ElementName=LoginView}">
+                        </Button>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>
