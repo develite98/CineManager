@@ -16,10 +16,15 @@
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
+<<<<<<< HEAD:Project/SignUp.xaml
         WindowStartupLocation="CenterScreen"
         Title="Sign Up" Height="600" Width="400"
         DataContext="{StaticResource SignUpVM}"
         x:Name="SignUpView">
+=======
+        WindowStartupLocation="CenterOwner"
+        Title="Sign Up" Height="600" Width="400">
+>>>>>>> parent of f29d4cb... + design main view:Project/SignUpForm.xaml
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/br5.jpg"></ImageBrush>
