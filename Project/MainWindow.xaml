@@ -130,7 +130,7 @@
                                   Orientation="Horizontal"
                                   materialDesign:RippleAssist.IsCentered="True">
                             <Grid>
-                                <Button x:Name="btnOpenMenu"  Click="BtnOpenMenu_Click">
+                                <Button Height="35" x:Name="btnOpenMenu"  Click="BtnOpenMenu_Click">
                                     <Button.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                             <GradientStop Color="Black" Offset="0"/>
@@ -144,7 +144,7 @@
                                         </EventTrigger>
                                     </Button.Triggers>
                                 </Button>
-                                <Button x:Name="btnCloseMenu" Click="BtnCloseMenu_Click" Visibility="Collapsed">
+                                <Button Height="35" x:Name="btnCloseMenu" Click="BtnCloseMenu_Click" Visibility="Collapsed">
                                     <Button.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                             <GradientStop Color="Black" Offset="0"/>
@@ -159,6 +159,20 @@
                                     </Button.Triggers>
                                 </Button>
                             </Grid>
+                            <Menu Margin="4" Background="Black">
+                                <MenuItem Height="35" Header="Thể Loại" Foreground="White" FontFamily="Time New Roman">
+                                    <MenuItem.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="Black" Offset="0"/>
+                                            <GradientStop Color="#FF00D69C" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </MenuItem.Background>
+                                    <MenuItem Header="Tình Cảm" Click="MenuItem_Click"> </MenuItem>
+                                    <MenuItem Header="Hành động" Click="MenuItem_Click_1" />
+                                    <MenuItem Header="Viễn tưởng" Click="MenuItem_Click_2"/>
+                                    <MenuItem Header="Phiêu lưu" Click="MenuItem_Click_3" />
+                                </MenuItem>
+                            </Menu>
                             <materialDesign:ColorZone Mode="Standard"
                                               Padding="1 1 1 1"
                                               CornerRadius="2"
@@ -197,7 +211,7 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
             </Grid>
-            <ScrollViewer VerticalScrollBarVisibility="Visible"  Margin="5" Grid.Row="1" >
+            <ScrollViewer x:Name="ScrollView1" VerticalScrollBarVisibility="Visible"  Margin="5" Grid.Row="1" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -349,6 +363,7 @@
             </ScrollViewer>
         </Grid>
         </Grid>
+        <ComboBox HorizontalAlignment="Left" Margin="268,-242,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
 </Window>
 

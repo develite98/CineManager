@@ -110,5 +110,25 @@ namespace ProjectVideo
 
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ScrollView1.ScrollToVerticalOffset(5);
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            ScrollView1.ScrollToVerticalOffset(250);
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            ScrollView1.ScrollToVerticalOffset(500);
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            ScrollView1.ScrollToVerticalOffset(750);
+        }
     }
 }
