@@ -24,11 +24,17 @@ namespace ProjectVideo
         public MainWindow()
         {
             InitializeComponent();
+            this.Height = System.Windows.SystemParameters.WorkArea.Height;
+            this.Width = System.Windows.SystemParameters.WorkArea.Width;
+            GridMain.Width = System.Windows.SystemParameters.WorkArea.Width;
         }
 
         public MainWindow(string UserName)
         {
             InitializeComponent();
+            this.Height = System.Windows.SystemParameters.WorkArea.Height;
+            this.Width = System.Windows.SystemParameters.WorkArea.Width;
+            GridMain.Width = System.Windows.SystemParameters.WorkArea.Width;
             if (UserName != null)
             {
                 //txtModule.Text = UserName;
