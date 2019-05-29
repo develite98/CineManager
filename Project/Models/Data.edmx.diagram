@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="08150ec7f0a74492aeff922e7c885399" Name="Diagram1">
-        <EntityTypeShape EntityType="VideoSupplyManagementModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VideoSupplyManagementModel.VideoKind" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VideoSupplyManagementModel.Video" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="VideoSupplyManagementModel.fk_videokind" ManuallyRouted="false" />
+      <Diagram DiagramId="1683f69894e349e997295360abb9559c" Name="Diagram1">
+        <EntityTypeShape EntityType="VideoSupplyManagementModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoSupplyManagementModel.VideoKind" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoSupplyManagementModel.Video" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="VideoSupplyManagementModel.fk_videokind_video" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -11,7 +11,8 @@ namespace ProjectVideo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+
     public partial class VideoKind
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,13 @@ namespace ProjectVideo.Models
         {
             this.Videos = new HashSet<Video>();
         }
-    
+
         public int ID { get; set; }
         public string kindName { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Video> Videos { get; set; }
+
+        public ObservableCollection<Video> listFilm { get; set; }
     }
 }

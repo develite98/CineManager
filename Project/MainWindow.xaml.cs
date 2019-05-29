@@ -53,57 +53,6 @@ namespace ProjectVideo
             btnCloseMenu.Visibility = Visibility.Collapsed;
         }
 
-        private void MainViewWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<test> list = new List<test>();
-            list.Add(new test { ImagePATH = "/Resources/br1.jpg", TEST_NAME = "Phong", INFO = "Phim con heo" });
-            list.Add(new test { ImagePATH = "/Resources/br2.jpg", TEST_NAME = "Arrr", INFO = "Phim con heo" });
-            list.Add(new test { ImagePATH = "/Resources/br3.jpg", TEST_NAME = "BBB", INFO = "Phim con heo" });
-            list.Add(new test { ImagePATH = "/Resources/br4.jpg", TEST_NAME = "RRR", INFO = "Phim con heo" });
-            list.Add(new test { ImagePATH = "/Resources/br5.jpg", TEST_NAME = "CCC", INFO = "Phim con heo" });
-            list1.ItemsSource = list;
-        }
-
-
-        public class test
-        {
-            private string test_name;
-            private string ipath;
-            private string info;
-            public string TEST_NAME
-            {
-                get
-                {
-                    return test_name;
-                }
-                set
-                {
-                    test_name = value;
-                }
-            }
-            public string ImagePATH
-            {
-                get
-                {
-                    return ipath;
-                }
-                set
-                {
-                    ipath = value;
-                }
-            }
-            public string INFO
-            {
-                get
-                {
-                    return info;
-                }
-                set
-                {
-                    info = value;
-                }
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
