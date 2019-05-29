@@ -164,11 +164,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Models\Data.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Data.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Models\Data.edmx.diagram">
       <DependentUpon>Data.edmx</DependentUpon>
     </None>
@@ -210,6 +212,56 @@
       <DependentUpon>Data.edmx</DependentUpon>
       <LastGenOutput>Data.cs</LastGenOutput>
     </Content>
+    <Content Include="Video\amnhac\MỘT BƯỚC YÊU VẠN DẶM ĐAU - MR. SIRO - OFFICIAL MV.mp4" />
+    <Content Include="Video\amnhac\Âm Thầm Bên Em - OFFICIAL MUSIC VIDEO - Sơn Tùng M-TP.mp4" />
+    <Content Include="Video\haihuoc\FAPtv Cơm Nguội- Tập 192 - Anh Trai Nuôi.mp4" />
+    <Content Include="Video\haihuoc\THE CALL TẬP 1 - CUỘC GỌI LÚC NỬA ĐÊM - TRẤN THÀNH, TRUNG DÂN, ANH ĐỨC, THANH THỦY, BB TRẦN.mp4" />
+    <Content Include="Video\hanhdong\Thành Long - Những Cảnh Chiến Đấu Hay Nhất - Trong phim quái vật.mp4" />
+    <Content Include="Video\hanhdong\Tổng hợp võ thuật Ngô Kinh - Xem cả trăm lần vẫn hay..!!.mp4" />
+    <Content Include="Video\hinhsu\Phóng sự - Nữ cảnh sát đặc nhiệm - K20 [ANTV].mp4" />
+    <Content Include="Video\hinhsu\Sức Mạnh Của Lực Lượng Đặc Nhiệm Mỹ.mp4" />
+    <Content Include="Video\hoathinh\Heo Peppa Pig tập mới phim hoạt hình biên soạn cho trẻ em 2018 #121.mp4" />
+    <Content Include="Video\hoathinh\Hoạt Hình Ấu Trùng Tinh Nghịch 2018 ❤️ Tập 6 ❤️ Hoạt Hình larva Ấu Trùng Tinh Nghịch Mới Nhất 2018.mp4" />
+    <Content Include="Video\huyenbi\FAPtv Cơm Nguội- Tập 35 - Sinbad Phiêu Lưu Ký.mp4" />
+    <Content Include="Video\huyenbi\Tuyển Tập Hoạt Hình Doraemon Tiếng Việt Tập 124 - Cuộc Phiêu Lưu Dưới Lòng Đất.mp4" />
+    <Resource Include="Video\img\amnhac\amthambenem.jpg" />
+    <Resource Include="Video\img\amnhac\motbuocyeuvandamdau.jpg" />
+    <Resource Include="Video\img\haihuoc\comnguoi.jpg" />
+    <Resource Include="Video\img\haihuoc\thecall.jpg" />
+    <Resource Include="Video\img\hanhdong\ngokinh.jpg" />
+    <Resource Include="Video\img\hanhdong\thanhlong.jpg" />
+    <Resource Include="Video\img\hinhsu\dacnhiemmy.jpg" />
+    <Resource Include="Video\img\hinhsu\nucs.jpg" />
+    <Resource Include="Video\img\hoathinh\autrung.jpg" />
+    <Resource Include="Video\img\hoathinh\heopeppa.jpg" />
+    <Resource Include="Video\img\huyenbi\comnguoi.jpg" />
+    <Resource Include="Video\img\huyenbi\doremon.jpg" />
+    <Resource Include="Video\img\kinhdi\autrungkisinh.jpg" />
+    <Resource Include="Video\img\kinhdi\banoima.jpg" />
+    <Resource Include="Video\img\lichsu\chientranhthu2.jpg" />
+    <Resource Include="Video\img\lichsu\dienbienphu.jpg" />
+    <Resource Include="Video\img\phieuluu\de-men-phieu-luu-ky-tai-ban-2014-bia-cung-700x1000.jpg" />
+    <Resource Include="Video\img\thanthoai\6dieukibi.jpg" />
+    <Resource Include="Video\img\thanthoai\dongbang.jpg" />
+    <Resource Include="Video\img\tinhcam\chotyeu.jpg" />
+    <Resource Include="Video\img\tinhcam\noeldautien.jpg" />
+    <Resource Include="Video\img\vientruong\ngaytanthe.jpg" />
+    <Resource Include="Video\img\vientruong\sotantraidat.jpg" />
+    <Content Include="Video\kinhdi\Nhạc Phim Kinh Dị 2019 - Ấu Trùng Kí Sinh - Liên Khúc Nhạc Trẻ Remix Lồng Phim Kinh Dị.mp4" />
+    <Content Include="Video\kinhdi\THÊM ÔNG NỘI MA - GAME KINH DỊ PAPER DOLL #2 - SPIDERGAMING.mp4" />
+    <Content Include="Video\lichsu\Chiến Tranh THẾ GIỚI thứ 2 - Tập 1 - Những thước phim Rõ nét NHẤT HD.mp4" />
+    <Content Include="Video\lichsu\Điện Biên Phủ - những lát cắt lịch sử - THỜI SỰ HẬU GIANG – 07-5-2019.mp4" />
+    <Content Include="Video\phieuluu\Dế Mèn Phiêu Lưu Ký %28Phần 1%29 - Tô Hoài.mp4" />
+    <Content Include="Video\phieuluu\Dế Mèn Phiêu Lưu Ký %28Phần 2%29 - Tô Hoài.mp4" />
+    <Content Include="Video\thanthoai\6 Sự Kiện Siêu Nhiên Huyền Bí Được Chứng Kiến Bởi Cảnh Sát.mp4" />
+    <Content Include="Video\thanthoai\7 Thứ Kỳ Bí Bị Đóng Băng Gây Sốc.mp4" />
+    <Content Include="Video\tinhcam\[Phim Ngắn] Chót Yêu - FULL - Phim Học Đường Hay Nhất 2018 - Thái Cats Official.mp4" />
+    <Content Include="Video\tinhcam\[Phim Ngắn] NOEL ĐẦU TIÊN - FU PRODUCTION.mp4" />
+    <Content Include="Video\vientuong\Ngày Tận Thế --- phim khoa học viễn tưởng hay nhất 2019.mp4" />
+    <Content Include="Video\vientuong\Phim khoa học - Sơ Tán Trái Đất.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Video\phieuluu\Xem phim Công phu Gấu Trúc-Kung Fu Panda %282008%29 [Full HD-Vietsub].TS" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

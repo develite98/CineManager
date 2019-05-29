@@ -11,14 +11,21 @@ namespace ProjectVideo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Video
     {
         public int ID { get; set; }
         public string videoName { get; set; }
         public Nullable<int> videoKind { get; set; }
+        public string describe { get; set; }
+        public string poster { get; set; }
         public string videoPath { get; set; }
-    
+
         public virtual VideoKind VideoKind1 { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", videoName);
+        }
     }
 }

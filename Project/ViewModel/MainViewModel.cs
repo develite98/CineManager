@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,15 @@ namespace ProjectVideo.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        private ObservableCollection<VideoKind> listFilmByKind;
+        public ObservableCollection<VideoKind> ListFilmByKind { get { return listFilmByKind; } set { listFilmByKind = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<Video> lstFilm;
+
         private string username = "";
         public string UserName { get; set; }
         public ICommand Li_LoCommand { get; set; }
+        public ICommand LoadedWindowCommand { get; set; }
 
         public MainViewModel()
         {
@@ -52,6 +59,22 @@ namespace ProjectVideo.ViewModel
                     p.Close();
                 }
             });
+
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                loadKindOfFilm();
+            });
+        }
+
+        private void loadKindOfFilm()
+        {
+            ListFilmByKind = new ObservableCollection<VideoKind>(DataProvider.Ins.DB.VideoKinds);
+            foreach (var lst in ListFilmByKind)
+            {
+                lstFilm = new ObservableCollection<Video>(DataProvider.Ins.DB.Videos.Where(x => x.videoKind == lst.ID));
+                lst.listFilm = lstFilm;
+            }
         }
     }
 }
+
