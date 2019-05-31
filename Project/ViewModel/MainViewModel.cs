@@ -14,7 +14,6 @@ namespace ProjectVideo.ViewModel
     {
         private ObservableCollection<VideoKind> listFilmByKind;
         public ObservableCollection<VideoKind> ListFilmByKind { get { return listFilmByKind; } set { listFilmByKind = value; OnPropertyChanged(); } }
-
         private ObservableCollection<Video> lstFilm;
 
         private string username = "";
