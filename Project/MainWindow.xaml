@@ -64,7 +64,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <!---->
+
     </Window.Resources>
     <Grid Background="#FF252222">
         <Grid.RowDefinitions>
@@ -76,21 +76,21 @@
         </Grid>
         <Grid Grid.Row="1">
             <!--Phần menu-->
-        <Grid x:Name="GridMenu" Width="220" HorizontalAlignment="Left" Margin="-220 0 0 0" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <DockPanel Grid.Row="0">
-                <Button      x:Name="btnLi_Lo"
+            <Grid x:Name="GridMenu" Background="White" Opacity=".8" Width="220" HorizontalAlignment="Left" Margin="-220 0 0 0" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" Visibility="Collapsed">
+                    <Button      x:Name="btnLi_Lo"
                                  Command="{Binding Li_LoCommand}"
                                  CommandParameter="{Binding ElementName=MainViewWindow}"
                                  Width="100"
@@ -99,126 +99,182 @@
                                     FontSize="12"
                                     Background="DarkGray"
                                     Margin="5">Sign In</Button>
-                <Button         x:Name="btn11"
+                    <Button         x:Name="btn11"
                                     Width="100"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                     Grid.Column="0"
                                     FontSize="12"
                                     Background="DimGray"      
                                     Margin="0">Sign Up</Button>
-            </DockPanel>
-            <StackPanel Grid.Row="1">
+                </DockPanel>
+                <StackPanel Grid.Row="0" x:Name="UserInfo" Visibility="Collapsed">
+                <materialDesign:PackIcon Margin="10"
+                                         HorizontalAlignment="Center"
+                                         Kind="AccountCircle"
+                                         Height="80"
+                                         Width="80"/>
 
-            </StackPanel>
-        </Grid>
-        <!--Phần giao diện chính-->
-        <Grid x:Name="GridMain"  Width="1024" RenderTransformOrigin="0.5,0.5" Background="#FF252222">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <materialDesign:ColorZone Padding="9">
-                    <materialDesign:ColorZone.Background>
-                        <ImageBrush ImageSource="/Resources/br5.jpg"></ImageBrush>
-                    </materialDesign:ColorZone.Background>
-                    <DockPanel>
-                        <StackPanel
+                <TextBlock Margin="10" HorizontalAlignment="Center" Opacity=".8"> Thiên Phong Cao</TextBlock>
+                    <Button HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatButton}" Margin="0 4 0 0"
+                        
+                            >
+                        EDIT
+                    </Button>
+                    <Button HorizontalAlignment="Center" Width="120">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        Phim Yêu Thích
+                    </Button>
+
+                </StackPanel>
+                <StackPanel Grid.Row="0" x:Name="AdminInfo">
+                    <materialDesign:PackIcon Margin="10"
+                                         HorizontalAlignment="Center"
+                                         Kind="AccountCircleOutline"
+                                         Height="80"
+                                         Width="80"/>
+
+                    <TextBlock Margin="10" HorizontalAlignment="Center" Opacity=".8"> Admin</TextBlock>
+                    <Button HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatButton}" Margin="0 4 0 0"
+                        
+                            >
+                        EDIT
+                    </Button>
+                    <Button Margin="5" HorizontalAlignment="Center" Width="150">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        Danh Sách User
+                    </Button>
+                    <Button Margin="5" HorizontalAlignment="Center" Width="150">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        Danh Sách Video
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            <!--Phần giao diện chính-->
+            <Grid x:Name="GridMain"  Width="1024" RenderTransformOrigin="0.5,0.5" Background="#FF252222">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <materialDesign:ColorZone Padding="9">
+                        <materialDesign:ColorZone.Background>
+                            <ImageBrush ImageSource="/Resources/br5.jpg"></ImageBrush>
+                        </materialDesign:ColorZone.Background>
+                        <DockPanel>
+                            <StackPanel
                                   Orientation="Horizontal"
                                   materialDesign:RippleAssist.IsCentered="True">
-                            <Grid>
-                                <Button Height="35" x:Name="btnOpenMenu"  Click="BtnOpenMenu_Click">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                            <GradientStop Color="Black" Offset="0"/>
-                                            <GradientStop Color="#FF00D69C" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                    <materialDesign:PackIcon Kind="Account" />
-                                    <Button.Triggers>
-                                        <EventTrigger RoutedEvent="Button.Click">
-                                            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
-                                        </EventTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                                <Button Height="35" x:Name="btnCloseMenu" Click="BtnCloseMenu_Click" Visibility="Collapsed">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                            <GradientStop Color="Black" Offset="0"/>
-                                            <GradientStop Color="#FF00D69C" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                    <materialDesign:PackIcon Kind="AccountArrowLeftOutline" />
-                                    <Button.Triggers>
-                                        <EventTrigger RoutedEvent="Button.Click">
-                                            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
-                                        </EventTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                            </Grid>
-                            <Menu Margin="4" Background="Black">
-                                <MenuItem Height="35" Header="Thể Loại" Foreground="White" FontFamily="Time New Roman">
-                                    <MenuItem.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                            <GradientStop Color="Black" Offset="0"/>
-                                            <GradientStop Color="#FF00D69C" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </MenuItem.Background>
-                                    <MenuItem Header="Tình Cảm" Click="MenuItem_Click"></MenuItem>
-                                    <MenuItem Header="Hành động" Click="MenuItem_Click_1" />
-                                    <MenuItem Header="Viễn tưởng" Click="MenuItem_Click_2"/>
-                                    <MenuItem Header="Phiêu lưu" Click="MenuItem_Click_3" />
-                                </MenuItem>
-                            </Menu>
-                            <materialDesign:ColorZone Mode="Standard"
+                                <Grid>
+                                    <Button Height="35" x:Name="btnOpenMenu"  Click="BtnOpenMenu_Click">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <GradientStop Color="Black" Offset="0"/>
+                                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <materialDesign:PackIcon Kind="Account" />
+                                        <Button.Triggers>
+                                            <EventTrigger RoutedEvent="Button.Click">
+                                                <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+                                            </EventTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+                                    <Button Height="35" x:Name="btnCloseMenu" Click="BtnCloseMenu_Click" Visibility="Collapsed">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <GradientStop Color="Black" Offset="0"/>
+                                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <materialDesign:PackIcon Kind="AccountArrowLeftOutline" />
+                                        <Button.Triggers>
+                                            <EventTrigger RoutedEvent="Button.Click">
+                                                <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+                                            </EventTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+                                </Grid>
+                                <Menu Margin="4" Background="Black">
+                                    <MenuItem Height="35" Header="Thể Loại" Foreground="White" FontFamily="Time New Roman">
+                                        <MenuItem.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <GradientStop Color="Black" Offset="0"/>
+                                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </MenuItem.Background>
+                                        <MenuItem Header="Tình Cảm" Click="MenuItem_Click"></MenuItem>
+                                        <MenuItem Header="Hành động" Click="MenuItem_Click_1" />
+                                        <MenuItem Header="Viễn tưởng" Click="MenuItem_Click_2"/>
+                                        <MenuItem Header="Phiêu lưu" Click="MenuItem_Click_3" />
+                                    </MenuItem>
+                                </Menu>
+                                <materialDesign:ColorZone Mode="Standard"
                                               Padding="1 1 1 1"
                                               CornerRadius="2"
                                               Panel.ZIndex="1"
                                               Margin="400 0 0 0"
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                <Grid x:Name="GridSearch" Margin="4,0,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="104"/>
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Button Style="{DynamicResource MaterialDesignToolButton}">
-                                        <materialDesign:PackIcon Kind="Magnify"
+                                    <Grid x:Name="GridSearch" Margin="4,0,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="104"/>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="Magnify"
                                                                      Opacity=".56" />
-                                    </Button>
-                                    <TextBox Grid.Column="1"
+                                        </Button>
+                                        <TextBox Grid.Column="1"
                                                  Margin="8,4,0,4"
                                                  materialDesign:HintAssist.Hint="Build a search bar"
                                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                                  BorderThickness="0"
                                                  MinWidth="200"
                                                  VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                                    <Button Style="{DynamicResource MaterialDesignToolButton}"
+                                        <Button Style="{DynamicResource MaterialDesignToolButton}"
                                                 Grid.Column="3">
-                                    </Button>
-                                </Grid>
-                            </materialDesign:ColorZone>
-                            <Button Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                                        </Button>
+                                    </Grid>
+                                </materialDesign:ColorZone>
+                                <Button Style="{DynamicResource MaterialDesignToolForegroundButton}"
                                             Margin="8 0 0 0"
                                             Panel.ZIndex="0">
-                                <materialDesign:PackIcon Kind="Send" />
-                            </Button>
-                        </StackPanel>
-                    </DockPanel>
-                </materialDesign:ColorZone>
-            </Grid>
-            <ScrollViewer x:Name="ScrollView1" VerticalScrollBarVisibility="Visible"  Margin="5" Grid.Row="1" >
-                <!--<Grid>
-                    <Grid.RowDefinitions>
+                                    <materialDesign:PackIcon Kind="Send" />
+                                </Button>
+                            </StackPanel>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                </Grid>
+                <ScrollViewer x:Name="ScrollView1" VerticalScrollBarVisibility="Visible"  Margin="5" Grid.Row="1" >
+                    <Grid>
+                        <!--<Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -257,11 +313,12 @@
                     <TextBlock Grid.Row="16" Margin="5" FontSize="25" FontWeight="Bold" Foreground="#DDFFFFFF" FontFamily="Antique">Kinh dị</TextBlock>
                     <TextBlock Grid.Row="18" Margin="5" FontSize="25" FontWeight="Bold" Foreground="#DDFFFFFF" FontFamily="Antique">Thần thoại</TextBlock>
                     <TextBlock Grid.Row="20" Margin="5" FontSize="25" FontWeight="Bold" Foreground="#DDFFFFFF" FontFamily="Antique">Hình sự</TextBlock>
-                    <TextBlock Grid.Row="22" Margin="5" FontSize="25" FontWeight="Bold" Foreground="#DDFFFFFF" FontFamily="Antique">Huyền bí</TextBlock>
+                    <TextBlock Grid.Row="22" Margin="5" FontSize="25" FontWeight="Bold" Foreground="#DDFFFFFF" FontFamily="Antique">Huyền bí</TextBlock>-->
 
-                    --><!--List Phim Thứ 1, Row 1--><!--
-                    <StackPanel Grid.Row="1">
-                        <ItemsControl  x:Name="list1"
+                        <!--List Phim Thứ 1, Row 1-->
+                        <!--<StackPanel Grid.Row="1">
+                        -->
+                        <!--<ItemsControl   
                                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ItemsControl.ItemsPanel>
@@ -286,7 +343,7 @@
                                             <RowDefinition Height="20"/>
                                         </Grid.RowDefinitions>
                                         <materialDesign:Flipper Grid.Row="0" Margin="2">
-                                            --><!--Mặt trước--><!--
+                                            Mặt trước
                                             <materialDesign:Flipper.FrontContent>
                                                 <Button                       
                                                     Command="{x:Static materialDesign:Flipper.FlipCommand}"
@@ -299,7 +356,7 @@
                                                     <materialDesign:PackIcon Kind="Play"/>
                                                 </Button>
                                             </materialDesign:Flipper.FrontContent>
-                                            --><!--Mặt sau--><!--
+                                           Mặt sau
                                             <materialDesign:Flipper.BackContent>
                                                 <Grid
                                                     Height="230"
@@ -342,17 +399,17 @@
 
                                                             </ImageBrush>
                                                         </StackPanel.Background>
-                                                        --><!--Tên phim--><!--
+                                                        Tên phim
                                                         <DockPanel Margin="5" >
                                                             <TextBlock Foreground="White" FontWeight="Bold" Margin="5" Text="-Name: "></TextBlock>
                                                             <TextBlock Foreground="White" x:Name="Ten" FontWeight="Bold" Margin="5" Text="{Binding Path=TEST_NAME}"></TextBlock>
                                                         </DockPanel>
-                                                        --><!--Info phim--><!--
+                                                        Info phim
                                                         <DockPanel Margin="5">
                                                             <TextBlock Foreground="White" FontWeight="Bold" Margin="5" Text="-Info: "></TextBlock>
                                                             <TextBlock Foreground="White" FontWeight="Bold" Margin="5" Text="{Binding Path=INFO}"></TextBlock>
                                                         </DockPanel>
-                                                        --><!--Nút play--><!--
+                                                        Nút play
                                                         <Button Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="130,25,5,5" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF7EFBEA" Click="Button_Click" >
                                                             <Button.Background>
                                                                 <RadialGradientBrush>
@@ -373,111 +430,203 @@
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </Grid>-->
+                        </ItemsControl>-->
+                        <!--
+                    </StackPanel>-->
 
-                <StackPanel Orientation="Vertical">
-                    <ListView x:Name="lvFilm" ItemsSource="{Binding ListFilmByKind}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <!--Thể loại-->
-                                    <TextBlock Text="{Binding kindName}" Foreground="White"></TextBlock>
-                                    <!--ListFilm-->
-                                    <StackPanel>
-                                        <ItemsControl ItemsSource="{Binding listFilm}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding videoName}" Foreground="White"/>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                    <!--List Film-->
-                                    <!--<ItemsControl ItemsSource="{Binding ListFilm}" Grid.Row="1"
-                                                  ItemTemplate="{StaticResource listFilm}"
+                        <StackPanel Orientation="Vertical">
+                            <ListBox x:Name="lvFilm" ItemsSource="{Binding ListFilmByKind}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="{Binding kindName}" Foreground="White" FontSize="30" FontFamily="StarsStripes"></Label>
+
+
+
+
+                                            <ItemsControl x:Name="LISSS" ItemsSource="{Binding listFilm}"
                                                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <VirtualizingStackPanel Orientation="Horizontal"/>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.Template>
-                                            <ControlTemplate TargetType="ItemsControl">
-                                                <Grid>
-                                                    <ScrollViewer x:Name="scrollViewerFilm">
-                                                        <ScrollViewer.Template>
-                                                            <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                                                <Grid>
-                                                                    <ScrollContentPresenter/>
-                                                                </Grid>
-                                                            </ControlTemplate>
-                                                        </ScrollViewer.Template>
-                                                        <ItemsPresenter VerticalAlignment="Center"/>
-                                                    </ScrollViewer>
-                                                    <Grid>
-                                                        <Grid.Resources>
-                                                            <Style TargetType="{x:Type Button}">
-                                                                <Setter Property="Template">
-                                                                    <Setter.Value>
-                                                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                                            <Grid>
-                                                                                <Border Width="{TemplateBinding Width}"
-                                                                                    Height="{TemplateBinding Height}"
-                                                                                    BorderThickness="1" BorderBrush="AliceBlue"
-                                                                                    CornerRadius="2"
-                                                                                    Background="LightGray">
-                                                                                    <Border.Effect>
-                                                                                        <BlurEffect Radius="10"/>
-                                                                                    </Border.Effect>
-                                                                                </Border>
-                                                                                <ContentPresenter HorizontalAlignment="Center"
-                                                                                                  VerticalAlignment="Center"/>
-                                                                            </Grid>
-                                                                        </ControlTemplate>
-                                                                    </Setter.Value>
-                                                                </Setter>
-                                                            </Style>
-                                                        </Grid.Resources>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Button Command="{x:Static ScrollBar.LineLeftCommand}"
-                                                                CommandTarget="{Binding ElementName=scrollViewerFilm}">
-                                                            <Path VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                                                  Fill="White"
-                                                                  Data="M 20 0 L 0 10 L 20 20 L 20 16 L 4 10 L 20 4 Z"/>
-                                                        </Button>
-                                                        <Button Command="{x:Static ScrollBar.LineRightCommand}"
-                                                                CommandTarget="{Binding ElementName=scrollViewerFilm}"
-                                                                Grid.Column="2">
-                                                            <Path VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                                                  Fill="White"
-                                                                  Data="M 20 0 L 10 0 L 20 20 L 16 20 L 10 4 L 4 20 Z"/>
-                                                        </Button>
-                                                    </Grid>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </ItemsControl.Template>
-                                    </ItemsControl>-->                                    
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
-            </ScrollViewer>
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.Template>
+                                                    <ControlTemplate TargetType="ItemsControl">
+                                                        <Grid>
+                                                            <ScrollViewer>
+                                                                <ItemsPresenter VerticalAlignment="Center"/>
+                                                            </ScrollViewer>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ItemsControl.Template>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <Grid  Margin="5">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                            </Grid.RowDefinitions>
+                                                            <materialDesign:Flipper Grid.Row="0" Margin="5">
+                                                                <!--Mặt trước-->
+                                                                <materialDesign:Flipper.FrontContent>
+                                                                    <Grid HorizontalAlignment="Center">
+
+                                                                        <Image  Source="{Binding poster}" Width="430" Height="230" Stretch="Fill">
+                                                                            <Image.LayoutTransform>
+                                                                                <ScaleTransform></ScaleTransform>
+                                                                            </Image.LayoutTransform>
+                                                                            <Image.Style>
+                                                                                <Style  TargetType="{x:Type Image}">
+                                                                                    <Style.Triggers>
+                                                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                                                            <Trigger.EnterActions>
+                                                                                                <BeginStoryboard>
+                                                                                                    <Storyboard>
+                                                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                         To="1.1" Duration="0:0:0.2">
+                                                                                                        </DoubleAnimation>
+                                                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                         To="1.1" Duration="0:0:0.2">
+                                                                                                        </DoubleAnimation>
+                                                                                                    </Storyboard>
+                                                                                                </BeginStoryboard>
+                                                                                            </Trigger.EnterActions>
+                                                                                            <Trigger.ExitActions>
+                                                                                                <BeginStoryboard>
+                                                                                                    <Storyboard>
+                                                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                         Duration="0:0:0.2">
+                                                                                                        </DoubleAnimation>
+                                                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                         Duration="0:0:0.2">
+                                                                                                        </DoubleAnimation>
+                                                                                                    </Storyboard>
+                                                                                                </BeginStoryboard>
+                                                                                            </Trigger.ExitActions>
+                                                                                        </Trigger>
+                                                                                    </Style.Triggers>
+                                                                                </Style>
+                                                                            </Image.Style>
+                                                                        </Image>
+                                                                        <Button  Style="{StaticResource MaterialDesignFloatingActionLightButton}"             
+                                                                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                                            Width="100"
+                                                                            Height="100" BorderBrush="White" Foreground="#DDFDFDFD">
+                                                                            <Button.Background>
+                                                                                <SolidColorBrush Color="#FF06F1F1" Opacity="0.001"/>
+                                                                            </Button.Background>
+                                                                            <materialDesign:PackIcon Kind="Play" Height="60" Width="60"/>
+                                                                        </Button>
+                                                                    </Grid>
+                                                                </materialDesign:Flipper.FrontContent>
+                                                                <!--Mặt sau-->
+                                                                <materialDesign:Flipper.BackContent>
+                                                                    <Grid x:Name="GridInfo"  Height="250" Width="430"  >
+                                                                        <Grid.Background>
+                                                                            <ImageBrush ImageSource="{Binding poster}" TileMode="None" Stretch="Fill" Opacity="0.2">
+                                                                                
+                                                                            </ImageBrush>
+                                                                        </Grid.Background>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto"/>
+                                                                            <RowDefinition Height="*" />
+                                                                            <RowDefinition Height="auto"/>
+                                                                        </Grid.RowDefinitions>
+                                                                        <materialDesign:ColorZone Foreground="WhiteSmoke" Mode="Dark" Padding="5">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                                    HorizontalAlignment="Left">
+                                                                                    <materialDesign:PackIcon
+                                                                    Kind="BackspaceOutline"
+                                                                    HorizontalAlignment="Right"
+                                                                    Height="26" Width="26"/>
+                                                                                </Button>
+                                                                                <TextBlock
+                                                                Margin="3"
+                                                                VerticalAlignment="Center"
+                                                            FontSize="22"
+                                                                FontFamily="StarsStripes"> INFO
+                                                                                </TextBlock>
+                                                                            </StackPanel>
+                                                                        </materialDesign:ColorZone>
+                                                                        <StackPanel Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                                                                      
+                                                                            <!--Info phim-->
+                                                                            <Expander Background="Transparent"
+                                                                                      FontSize="10"
+                                                                                      Foreground="White"
+                                                                                      Header="Tóm tắt:"
+                                                                                      IsExpanded="True">
+                                                                                <WrapPanel 
+                                                                                          TextBlock.Foreground="White"
+                                                                                          >
+
+                                                                                    <TextBlock FontSize="15" Margin="5" Width="400" Height="200"
+                                                                                            Opacity=".9"
+                                                                                            Text="{Binding describe}"
+                                                                                            TextWrapping="Wrap" />
+                                                                                </WrapPanel>
+                                                                            </Expander>
+
+                                                                        </StackPanel>
+                                                                        <!--Nút play-->
+                                                                        <WrapPanel Grid.Row="2">
+                                                                            <Button  Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="5" BorderBrush="#FFD41C09" Click="Button_Click" ToolTip="Xem Video" >
+                                                                                <Button.Background>
+                                                                                    <RadialGradientBrush>
+                                                                                        <GradientStop Color="Black" Offset="1"/>
+                                                                                        <GradientStop Color="#FFD41C09" Offset="0.471"/>
+                                                                                    </RadialGradientBrush>
+                                                                                </Button.Background>
+                                                                                <materialDesign:PackIcon Kind="Play" Height="25" Width="25"></materialDesign:PackIcon>
+                                                                            </Button>
+                                                                            <ToggleButton Margin="5" Height="25" Width="25"
+                                                                                Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                                                ToolTip="Like Video"
+                                                                                IsChecked="False" BorderBrush="White" BorderThickness="1" Background="DarkBlue">
+                                                                                <materialDesign:PackIcon
+                                                                                    Foreground="White"
+                                                                                    Kind="LikeOutline"
+                                                                                    Height="15"
+                                                                                    Width="15" />
+                                                                            </ToggleButton>
+
+                                                                            <Button Margin="10,5,5,5" Foreground="White" Background="Transparent" BorderBrush="{x:Null}">
+                                                                                <materialDesign:PackIcon Kind="Add" Height="25" Width="25"></materialDesign:PackIcon>
+                                                                            </Button>
+                                                                            <Button Margin="5" Foreground="White" Background="Transparent" BorderBrush="{x:Null}">
+                                                                                <materialDesign:PackIcon Kind="Share" Height="25" Width="25"></materialDesign:PackIcon>
+                                                                            </Button>
+                                                                        </WrapPanel>
+
+                                                                    </Grid>
+                                                                </materialDesign:Flipper.BackContent>
+                                                            </materialDesign:Flipper>
+                                                            <Label VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" Foreground="White" Content="{Binding videoName}" Margin="0,0,0,10"></Label>
+                                                        </Grid>
+
+
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
         </Grid>
-        </Grid>
-        </Grid>
+    </Grid>
 </Window>
 
 
 
 
-    
-    
- 
+
+

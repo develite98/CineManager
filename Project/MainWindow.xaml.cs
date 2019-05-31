@@ -79,5 +79,40 @@ namespace ProjectVideo
         {
             ScrollView1.ScrollToVerticalOffset(750);
         }
+
+
+        public IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+
+                    if (child != null && child is T)
+                        yield return (T)child;
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                        yield return childOfChild;
+                }
+            }
+        }
+
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //foreach (var grid in FindVisualChildren<Grid>(this))
+            //{
+            //    if (grid.Name == "GridInfo")
+            //    {
+            //        /*   Your code here  */
+            //        grid.Visibility = Visibility.Visible;
+            //    }
+            //}
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
