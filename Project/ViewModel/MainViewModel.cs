@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ProjectVideo.Models;
 
@@ -18,6 +19,10 @@ namespace ProjectVideo.ViewModel
 
         private string username = "";
         public string UserName { get; set; }
+
+        private string videoPath = "";
+        public string VideoPath { get { return videoPath; } set { videoPath = value; OnPropertyChanged(); } }
+
         public ICommand Li_LoCommand { get; set; }
         public ICommand LoadedWindowCommand { get; set; }
 
