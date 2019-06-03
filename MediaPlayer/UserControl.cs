@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MediaPlayer
 {
-    public partial class UserControl1: UserControl
+    public partial class UserControl: System.Windows.Forms.UserControl
     {
-        public UserControl1()
+        public UserControl()
         {
             InitializeComponent();
         }

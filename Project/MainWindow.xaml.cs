@@ -54,12 +54,6 @@ namespace ProjectVideo
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             ScrollView1.ScrollToVerticalOffset(5);
@@ -110,9 +104,23 @@ namespace ProjectVideo
             //}
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-
+            string pathVideo = "";
+            var btnClick = (sender) as Button;
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoPath")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        pathVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo);
+            pvf.ShowDialog();
         }
     }
 }

@@ -20,8 +20,7 @@
         <StackPanel Grid.Row="1">
 
             <WindowsFormsHost Margin="5" Height="300">
-                <ax:AxMoviePlayer x:Name="MoviePlayer1"></ax:AxMoviePlayer>
-
+                <ax:AxMoviePlayer x:Name="MoviePlayer"></ax:AxMoviePlayer>
             </WindowsFormsHost>
             <WrapPanel>
                 <Button Content="Back" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Width="75" />

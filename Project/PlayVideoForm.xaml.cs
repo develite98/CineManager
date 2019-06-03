@@ -19,23 +19,31 @@ namespace ProjectVideo
     /// </summary>
     public partial class PlayVideoForm : Window
     {
+        string pathVideo;
         public PlayVideoForm()
         {
             InitializeComponent();
+        }
+
+        public PlayVideoForm(string path)
+        {
+            InitializeComponent();
+            this.pathVideo = path;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
-            MoviePlayer1.Play();
+            MoviePlayer.FileName = ""/*"/Video/tinhcam/[Phim Ngắn] NOEL ĐẦU TIÊN - FU PRODUCTION.mp4"* OR pathVideo fix đường dẫn chổ này*/;
+            MoviePlayer.Play();
         }
 
         private void PauseBtn_Click(object sender, RoutedEventArgs e)
         {
             PlayBtn.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Collapsed;
-            MoviePlayer1.Stop();
+            MoviePlayer.Stop();
         }
     }
 }
