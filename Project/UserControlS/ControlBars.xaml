@@ -9,7 +9,7 @@
              x:Name="controlbar">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/br5.jpg">
+            <ImageBrush ImageSource="../Resources/br5.jpg">
             </ImageBrush>
 
         </Grid.Background>

@@ -122,5 +122,23 @@ namespace ProjectVideo
             PlayVideoForm pvf = new PlayVideoForm(pathVideo);
             pvf.ShowDialog();
         }
+
+        private void UserListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            View.UserList us = new View.UserList();
+            us.ShowDialog();
+        }
+
+        private void VideoListBTN_Click(object sender, RoutedEventArgs e)
+        {
+            View.VideoList vdl = new View.VideoList();
+            vdl.ShowDialog();
+        }
+
+        private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
+        {
+            View.UserInfo usf = new View.UserInfo();
+            usf.ShowDialog();
+        }
     }
 }

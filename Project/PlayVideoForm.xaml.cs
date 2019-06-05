@@ -23,19 +23,36 @@ namespace ProjectVideo
         public PlayVideoForm()
         {
             InitializeComponent();
+            MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
+            MoviePlayer.Volume = (double)SliderVolumes.Value;
+            MoviePlayer.Play();
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(timer_tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
         }
+
+        void timer_tick(object sender, EventArgs e)
+        {
+            slider1.Value = MoviePlayer.Position.TotalSeconds;
+           
+        }
+    
 
         public PlayVideoForm(string path)
         {
             InitializeComponent();
             this.pathVideo = path;
+            //MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
+            MoviePlayer.Volume = (double)SliderVolumes.Value;
+            MoviePlayer.Play();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
-            MoviePlayer.FileName = ""/*"/Video/tinhcam/[Phim Ngắn] NOEL ĐẦU TIÊN - FU PRODUCTION.mp4"* OR pathVideo fix đường dẫn chổ này*/;
             MoviePlayer.Play();
         }
 
@@ -43,7 +60,71 @@ namespace ProjectVideo
         {
             PlayBtn.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Collapsed;
+            MoviePlayer.Pause();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(e.NewValue);
+            MoviePlayer.Position = ts;
+
+        }
+
+        private void MoviePlayer_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            if(MoviePlayer.NaturalDuration.HasTimeSpan)
+            {
+                TimeSpan ts = TimeSpan.FromMilliseconds(MoviePlayer.NaturalDuration.TimeSpan.TotalMilliseconds);
+                slider1.Maximum = ts.TotalSeconds;
+            }
+        }
+
+        private void SliderVolumes_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MoviePlayer.Volume = (double)SliderVolumes.Value;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            slider1.Value = slider1.Value + 40;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            slider1.Value = slider1.Value - 40;
+        }
+
+        private void ReplayButton_Click(object sender, RoutedEventArgs e)
+        {
             MoviePlayer.Stop();
+            MoviePlayer.Play();
+            slider1.Value = 0;
+
+        }
+
+        private void Zoom_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = System.Windows.SystemParameters.FullPrimaryScreenHeight;
+            this.Width = System.Windows.SystemParameters.FullPrimaryScreenWidth;
+            MoviePlayer.Width = this.Width;
+
+            ZoomIn.Visibility = Visibility.Collapsed;
+            ZoomOut.Visibility = Visibility.Visible;
+        }
+
+        private void ZoomOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Height = 700;
+            this.Width = 1000;
+            MoviePlayer.Width = this.Width;
+
+            ZoomIn.Visibility = Visibility.Visible;
+            ZoomOut.Visibility = Visibility.Collapsed;
         }
     }
 }
