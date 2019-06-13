@@ -43,9 +43,13 @@ namespace ProjectVideo
         {
             InitializeComponent();
             this.pathVideo = path;
-            //MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
+            MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
             MoviePlayer.Volume = (double)SliderVolumes.Value;
             MoviePlayer.Play();
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(timer_tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
 
         }
 
@@ -109,22 +113,21 @@ namespace ProjectVideo
 
         private void Zoom_Click(object sender, RoutedEventArgs e)
         {
-            this.Height = System.Windows.SystemParameters.FullPrimaryScreenHeight;
-            this.Width = System.Windows.SystemParameters.FullPrimaryScreenWidth;
-            MoviePlayer.Width = this.Width;
-
+            this.WindowState = WindowState.Maximized;
+            GridMain.Height = this.Height;
+            MoviePlayer.Height = this.Height - 165;
             ZoomIn.Visibility = Visibility.Collapsed;
             ZoomOut.Visibility = Visibility.Visible;
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
-            this.Height = 700;
-            this.Width = 1000;
-            MoviePlayer.Width = this.Width;
+            this.WindowState = WindowState.Normal;
+            MoviePlayer.Height = 500;
 
             ZoomIn.Visibility = Visibility.Visible;
             ZoomOut.Visibility = Visibility.Collapsed;
         }
+
     }
 }

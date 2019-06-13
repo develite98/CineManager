@@ -107,6 +107,12 @@
     <Compile Include="Models\VideoKind.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="SlashScreen.xaml.cs">
+      <DependentUpon>SlashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminManager.xaml.cs">
+      <DependentUpon>AdminManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MyplayList.xaml.cs">
       <DependentUpon>MyplayList.xaml</DependentUpon>
     </Compile>
@@ -128,12 +134,6 @@
     <Compile Include="View\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserList.xaml.cs">
-      <DependentUpon>UserList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\VideoList.xaml.cs">
-      <DependentUpon>VideoList.xaml</DependentUpon>
-    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +153,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SlashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MyplayList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,14 +182,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserInfo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\VideoList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
