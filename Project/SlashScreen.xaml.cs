@@ -11,17 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
-namespace ProjectVideo.View
+using System.Windows.Threading;
+namespace ProjectVideo
 {
     /// <summary>
-    /// Interaction logic for UserList.xaml
+    /// Interaction logic for SlashScreen.xaml
     /// </summary>
-    public partial class UserList : Window
+    public partial class SlashScreen : Window
     {
-        public UserList()
+        public SlashScreen()
         {
             InitializeComponent();
+        }
+
+        public double Progress
+        {
+            get { return progressBar.Value; }
+            set { progressBar.Value = value; }
         }
     }
 }

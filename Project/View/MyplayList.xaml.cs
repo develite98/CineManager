@@ -23,5 +23,40 @@ namespace ProjectVideo
         {
             InitializeComponent();
         }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            string pathVideo = "";
+            var btnClick = (sender) as Button;
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoPath")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        pathVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo);
+            pvf.ShowDialog();
+        }
+        public IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+
+                    if (child != null && child is T)
+                        yield return (T)child;
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                        yield return childOfChild;
+                }
+            }
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace ProjectVideo
             this.Height = System.Windows.SystemParameters.WorkArea.Height;
             this.Width = System.Windows.SystemParameters.WorkArea.Width;
             GridMain.Width = System.Windows.SystemParameters.WorkArea.Width;
+            lvFilm.Height = this.Height - 127;
         }
 
         public MainWindow(string UserName)
@@ -40,12 +41,14 @@ namespace ProjectVideo
                 //txtModule.Text = UserName;
                 btnLi_Lo.Content = "Logout";
             }
+            lvFilm.Height = this.Height - 127;
         }
         private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             btnOpenMenu.Visibility = Visibility.Collapsed;
             btnCloseMenu.Visibility = Visibility.Visible;
         }
+
 
         private void BtnCloseMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -56,22 +59,22 @@ namespace ProjectVideo
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            ScrollView1.ScrollToVerticalOffset(5);
+            lvFilm.ScrollIntoView(lvFilm.Items[0]);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            ScrollView1.ScrollToVerticalOffset(250);
+            lvFilm.ScrollIntoView(lvFilm.Items[1]);
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            ScrollView1.ScrollToVerticalOffset(500);
+            lvFilm.ScrollIntoView(lvFilm.Items[2]);
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            ScrollView1.ScrollToVerticalOffset(750);
+            lvFilm.ScrollIntoView(lvFilm.Items[3]);
         }
 
 
@@ -123,22 +126,23 @@ namespace ProjectVideo
             pvf.ShowDialog();
         }
 
-        private void UserListBtn_Click(object sender, RoutedEventArgs e)
-        {
-            View.UserList us = new View.UserList();
-            us.ShowDialog();
-        }
-
-        private void VideoListBTN_Click(object sender, RoutedEventArgs e)
-        {
-            View.VideoList vdl = new View.VideoList();
-            vdl.ShowDialog();
-        }
-
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
             View.UserInfo usf = new View.UserInfo();
             usf.ShowDialog();
+        }
+
+        private void AminTool_Click(object sender, RoutedEventArgs e)
+        {
+            View.AdminManager adm = new View.AdminManager();
+            adm.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyplayList mpl = new MyplayList();
+            mpl.Show();
+
         }
     }
 }

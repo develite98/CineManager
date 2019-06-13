@@ -4,9 +4,178 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectVideo"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
         mc:Ignorable="d"
-        Title="MyplayList" Height="450" Width="800">
-    <Grid>
-        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainVM}"
+        Title="MyplayList" Height="450" Width="800"
+        WindowStyle="None" >
+    <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <uc:ControlBars/>
+        <Grid Grid.Row="1">
+            <StackPanel Margin="5">
+                <Label Foreground="White" FontSize="20" FontWeight="Bold"> My play list</Label>
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <materialDesign:Flipper Grid.Row="0" Margin="5">
+                                <!--Mặt trước-->
+                                <materialDesign:Flipper.FrontContent>
+                                    <Grid HorizontalAlignment="Center">
+                                        <Image  Source="{Binding poster}" Width="430" Height="230" Stretch="Fill">
+                                            <Image.LayoutTransform>
+                                                <ScaleTransform></ScaleTransform>
+                                            </Image.LayoutTransform>
+                                            <Image.Style>
+                                                <Style  TargetType="{x:Type Image}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                         To="1.1" Duration="0:0:0.2">
+                                                                        </DoubleAnimation>
+                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                         To="1.1" Duration="0:0:0.2">
+                                                                        </DoubleAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.EnterActions>
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                         Duration="0:0:0.2">
+                                                                        </DoubleAnimation>
+                                                                        <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                         Duration="0:0:0.2">
+                                                                        </DoubleAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.ExitActions>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
+                                        <Button  Style="{StaticResource MaterialDesignFloatingActionLightButton}"             
+                                                                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                                            Width="100"
+                                                                            Height="100" BorderBrush="White" Foreground="#DDFDFDFD">
+                                            <Button.Background>
+                                                <SolidColorBrush Color="#FF06F1F1" Opacity="0.001"/>
+                                            </Button.Background>
+                                            <materialDesign:PackIcon Kind="Play" Height="60" Width="60"/>
+                                        </Button>
+                                    </Grid>
+                                </materialDesign:Flipper.FrontContent>
+                                <!--Mặt sau-->
+                                <materialDesign:Flipper.BackContent>
+                                    <Grid x:Name="GridInfo"  Height="250" Width="430"  >
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="{Binding poster}" TileMode="None" Stretch="Fill" Opacity="0.2">
+
+                                            </ImageBrush>
+                                        </Grid.Background>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <materialDesign:ColorZone Foreground="WhiteSmoke" Mode="Dark" Padding="5">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                                                        Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                                                        HorizontalAlignment="Left">
+                                                    <materialDesign:PackIcon
+                                                                                        Kind="BackspaceOutline"
+                                                                                        HorizontalAlignment="Right"
+                                                                                        Height="26" Width="26"/>
+                                                </Button>
+                                                <TextBlock
+                                                                                            Margin="3"
+                                                                                            VerticalAlignment="Center"
+                                                                                            FontSize="22"
+                                                                                            FontFamily="StarsStripes"> INFO
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </materialDesign:ColorZone>
+                                        <StackPanel Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                                            <!--Info phim-->
+                                            <Expander Background="Transparent"
+                                                                                      FontSize="10"
+                                                                                      Foreground="White"
+                                                                                      Header="Tóm tắt:"
+                                                                                      IsExpanded="True">
+                                                <WrapPanel 
+                                                                                          TextBlock.Foreground="White"
+                                                                                          >
+
+                                                    <TextBlock FontSize="15" Margin="5" Width="400" Height="200"
+                                                                                            Opacity=".9"
+                                                                                            Text="{Binding describe}"
+                                                                                            TextWrapping="Wrap" />
+
+                                                </WrapPanel>
+                                            </Expander>
+                                        </StackPanel>
+                                        <!--Nút play-->
+                                        <WrapPanel Grid.Row="2">
+                                            <Button x:Name="btnPlay" 
+                                                                                    Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="5" 
+                                                                                    BorderBrush="#FFD41C09" ToolTip="Xem Video"
+                                                                                    Tag="{Binding ID}"
+                                                                                    Click="BtnPlay_Click">
+                                                <Button.Background>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="Black" Offset="1"/>
+                                                        <GradientStop Color="#FFD41C09" Offset="0.471"/>
+                                                    </RadialGradientBrush>
+                                                </Button.Background>
+                                                <materialDesign:PackIcon Kind="Play" Height="25" Width="25"></materialDesign:PackIcon>
+                                            </Button>
+                                            <ToggleButton Margin="5" Height="25" Width="25"
+                                                                                Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                                                ToolTip="Like Video"
+                                                                                IsChecked="False" BorderBrush="White" BorderThickness="1" Background="DarkBlue">
+                                                <materialDesign:PackIcon
+                                                                                    Foreground="White"
+                                                                                    Kind="LikeOutline"
+                                                                                    Height="15"
+                                                                                    Width="15" />
+                                            </ToggleButton>
+
+                                            <Button Margin="10,5,5,5" Foreground="White" Background="Transparent" BorderBrush="{x:Null}">
+                                                <materialDesign:PackIcon Kind="Add" Height="25" Width="25"></materialDesign:PackIcon>
+                                            </Button>
+                                            <Button Margin="5" Foreground="White" Background="Transparent" BorderBrush="{x:Null}">
+                                                <materialDesign:PackIcon Kind="Share" Height="25" Width="25"></materialDesign:PackIcon>
+                                            </Button>
+                                        </WrapPanel>
+                                    </Grid>
+                                </materialDesign:Flipper.BackContent>
+                            </materialDesign:Flipper>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>        
     </Grid>
 </Window>

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ProjectVideo.View
 {
     /// <summary>
-    /// Interaction logic for VideoList.xaml
+    /// Interaction logic for AdminManager.xaml
     /// </summary>
-    public partial class VideoList : Window
+    public partial class AdminManager : Window
     {
-        public VideoList()
+        public AdminManager()
         {
             InitializeComponent();
         }
