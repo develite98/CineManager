@@ -21,6 +21,8 @@ namespace ProjectVideo.ViewModel
         private string userName;
         public string UserName { get { return userName; } set { userName = value; OnPropertyChanged(); } }
 
+        public string fullNameUser;
+
         private string password;
         public string Password { get { return password; } set { password = value; OnPropertyChanged(); } }
 
@@ -37,20 +39,23 @@ namespace ProjectVideo.ViewModel
                 return;
             // check admin
             int admin = DataProvider.Ins.DB.Users.Where(us => us.userName == UserName && us.userPassword == Password && us.isAdmin == true).Count();
-            //
+            //---------------
             // check user
             int user = DataProvider.Ins.DB.Users.Where(us => us.userName == UserName && us.userPassword == Password).Count();
-            //
-            if (admin > 0) // module Admin
+            //---------------
+            if (admin > 0 || user > 0) // module Admin
             {
-                MessageBox.Show("Admin");
-            }
-            else if (user > 0) // module User
-            {
+                var temp = DataProvider.Ins.DB.Users.Where(us => us.userName == userName && us.userPassword == Password).FirstOrDefault();
+                fullNameUser = temp.Name;
                 isLogin = true;
                 p.Close();
             }
-            else // 
+            //else if (user > 0) // module User
+            //{
+            //    isLogin = true;
+            //    p.Close();
+            //}
+            else // Login fail
             {
                 isLogin = false;
                 MessageBox.Show("Wrong account or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

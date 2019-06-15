@@ -101,9 +101,10 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <DockPanel Grid.Row="0" x:Name="GuesInfo"  Visibility="Collapsed">
+                <!--Login-Signup-->
+                <DockPanel Grid.Row="0" x:Name="GuesInfo"  Visibility="Visible">
                     <Button      x:Name="btnLi_Lo"
-                                 Command="{Binding Li_LoCommand}"
+                                 Command="{Binding LoginCommand}"
                                  CommandParameter="{Binding ElementName=MainViewWindow}"
                                  Width="100"
                                  Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -119,14 +120,15 @@
                                     Background="DimGray"      
                                     Margin="0">Sign Up</Button>
                 </DockPanel>
-                <StackPanel Grid.Row="0" x:Name="UserInfo" Visibility="Visible">
+                <!--User-->
+                <StackPanel Grid.Row="0" x:Name="UserInfo" Visibility="Collapsed">
                     <materialDesign:PackIcon Margin="10"
                                          HorizontalAlignment="Center"
                                          Kind="AccountCircle"
                                          Height="80"
                                          Width="80"/>
 
-                    <TextBlock Margin="10" HorizontalAlignment="Center" Opacity=".8"> Thiên Phong Cao</TextBlock>
+                    <TextBlock x:Name="txtFullName" Margin="10" HorizontalAlignment="Center" Opacity=".8" Text="{Binding FullName}">???</TextBlock>
                     <Button x:Name="BtnEditInfo"
                             HorizontalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatButton}" Margin="0 4 0 0"
@@ -143,8 +145,9 @@
                         </Button.Background>
                         Phim Yêu Thích
                     </Button>
-
                 </StackPanel>
+                <!--//////////////-->
+                <!--Admin-->
                 <StackPanel Grid.Row="0" x:Name="AdminInfo" Visibility="Collapsed">
                     <materialDesign:PackIcon Margin="10"
                                          HorizontalAlignment="Center"
@@ -152,7 +155,7 @@
                                          Height="80"
                                          Width="80"/>
 
-                    <TextBlock Margin="10" HorizontalAlignment="Center" Opacity=".8"> Admin</TextBlock>
+                    <TextBlock Margin="10" HorizontalAlignment="Center" Opacity=".8">Admin</TextBlock>
                     <Button HorizontalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatButton}" Margin="0 4 0 0"
                         
@@ -173,8 +176,8 @@
                             </WrapPanel>
                         </Button.Content>
                     </Button>
-
                 </StackPanel>
+                <!-- ///////////// -->
             </Grid>
             <!--Phần giao diện chính-->
             <Grid x:Name="GridMain" HorizontalAlignment="Right" Background="#FF252222">
@@ -323,7 +326,7 @@
                                                             <!--Mặt trước-->
                                                             <materialDesign:Flipper.FrontContent>
                                                                 <Grid HorizontalAlignment="Center">
-                                                                    <Image  Source="{Binding poster}" Width="430" Height="230" Stretch="Fill">
+                                                                    <Image Source="{Binding poster}" Width="430" Height="230" Stretch="Fill">
                                                                         <Image.LayoutTransform>
                                                                             <ScaleTransform></ScaleTransform>
                                                                         </Image.LayoutTransform>

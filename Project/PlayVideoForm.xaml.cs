@@ -23,13 +23,6 @@ namespace ProjectVideo
         public PlayVideoForm()
         {
             InitializeComponent();
-            MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
-            MoviePlayer.Volume = (double)SliderVolumes.Value;
-            MoviePlayer.Play();
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(timer_tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
         }
 
         void timer_tick(object sender, EventArgs e)
@@ -43,7 +36,7 @@ namespace ProjectVideo
         {
             InitializeComponent();
             this.pathVideo = path;
-            MoviePlayer.Source = new Uri("../Resources/Tân Ỷ Thiên Đồ Long Ký 2019 Tập 9 VietSub FullHD - YouTube_2.mp4", UriKind.Relative);
+            MoviePlayer.Source = new Uri(handlePathVideo(pathVideo), UriKind.Relative);
             MoviePlayer.Volume = (double)SliderVolumes.Value;
             MoviePlayer.Play();
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -53,6 +46,15 @@ namespace ProjectVideo
 
         }
 
+        // handle path video
+        private string handlePathVideo(string path)
+        {
+            string ap = System.IO.Path.GetFullPath(path);
+            int s = ap.LastIndexOf("bin");
+            string output = ap.Remove(s, 10);
+            return output;
+        }
+        //----------------------------
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PauseBtn.Visibility = Visibility.Visible;
