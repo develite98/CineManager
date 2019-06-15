@@ -23,13 +23,13 @@ namespace ProjectVideo.ViewModel
         private string videoPath = "";
         public string VideoPath { get { return videoPath; } set { videoPath = value; OnPropertyChanged(); } }
 
-        public ICommand Li_LoCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
         public ICommand LoadedWindowCommand { get; set; }
 
         public MainViewModel()
         {
             // handle login - logout
-            Li_LoCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 Login loginView = new Login();
                 var loginViewModel = loginView.DataContext as LoginViewModel;
@@ -42,7 +42,7 @@ namespace ProjectVideo.ViewModel
 
                     if (loginViewModel.isLogin)
                     {
-                        UserName = loginViewModel.UserName;
+                        UserName = loginViewModel.fullNameUser;
                         mainWindow = new MainWindow(UserName);
                         mainWindow.Show();
                         p.Close();
@@ -54,14 +54,14 @@ namespace ProjectVideo.ViewModel
                         p.Close();
                     }
                 }
-                else // handle logout
-                {
-                    loginViewModel.UserName = null;
-                    loginViewModel.Password = null;
-                    mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    p.Close();
-                }
+                //else // handle logout
+                //{
+                //    loginViewModel.UserName = null;
+                //    loginViewModel.Password = null;
+                //    mainWindow = new MainWindow();
+                //    mainWindow.Show();
+                //    p.Close();
+                //}
             });
 
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -72,10 +72,10 @@ namespace ProjectVideo.ViewModel
 
         private void loadKindOfFilm()
         {
-            ListFilmByKind = new ObservableCollection<VideoKind>(DataProvider.Ins.DB.VideoKinds);
-            foreach (var lst in ListFilmByKind)
+            ListFilmByKind = new ObservableCollection<VideoKind>(DataProvider.Ins.DB.VideoKinds); // Load category film
+            foreach (var lst in ListFilmByKind) // load film by category
             {
-                lstFilm = new ObservableCollection<Video>(DataProvider.Ins.DB.Videos.Where(x => x.videoKind == lst.ID));
+                lstFilm = new ObservableCollection<Video>(DataProvider.Ins.DB.Videos.Where(x => x.videoKind == lst.ID)); 
                 lst.listFilm = lstFilm;
             }
         }

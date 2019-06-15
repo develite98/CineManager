@@ -38,8 +38,16 @@ namespace ProjectVideo
             GridMain.Width = System.Windows.SystemParameters.WorkArea.Width;
             if (UserName != null)
             {
-                //txtModule.Text = UserName;
-                btnLi_Lo.Content = "Logout";
+                GuesInfo.Visibility = Visibility.Collapsed;
+                if (UserName != "Admin")
+                {
+                    UserInfo.Visibility = Visibility.Visible;
+                    txtFullName.Text = UserName;
+                }
+                else
+                {
+                    AdminInfo.Visibility = Visibility.Visible;
+                }
             }
             lvFilm.Height = this.Height - 127;
         }
@@ -48,7 +56,6 @@ namespace ProjectVideo
             btnOpenMenu.Visibility = Visibility.Collapsed;
             btnCloseMenu.Visibility = Visibility.Visible;
         }
-
 
         private void BtnCloseMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -109,6 +116,7 @@ namespace ProjectVideo
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
+            // handle click video move to form play film
             string pathVideo = "";
             var btnClick = (sender) as Button;
             foreach (var textblock in FindVisualChildren<TextBlock>(this))
