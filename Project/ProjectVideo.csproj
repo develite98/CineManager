@@ -98,6 +98,9 @@
       <DependentUpon>Data.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DataProvider.cs" />
+    <Compile Include="Models\PlayList.cs">
+      <DependentUpon>Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -110,6 +113,7 @@
     <Compile Include="SlashScreen.xaml.cs">
       <DependentUpon>SlashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\PlayVideoViewModel.cs" />
     <Compile Include="View\AdminManager.xaml.cs">
       <DependentUpon>AdminManager.xaml</DependentUpon>
     </Compile>

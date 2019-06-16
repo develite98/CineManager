@@ -123,14 +123,14 @@ namespace ProjectVideo
             {
                 if (textblock.Name == "tbVideoPath")
                 {
-                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
-                    {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString()) // search textblock contain ID film and compare with btnClick contain ID film
+                    {                                                       // it mean is got the film is pressed
                         pathVideo = textblock.Text;
                         break;
                     }
                 }
             }
-            PlayVideoForm pvf = new PlayVideoForm(pathVideo);
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtFullName.Text);
             pvf.ShowDialog();
         }
 
@@ -146,9 +146,9 @@ namespace ProjectVideo
             adm.ShowDialog();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnMyPlayList_Click(object sender, RoutedEventArgs e)
         {
-            MyplayList mpl = new MyplayList();
+            MyplayList mpl = new MyplayList(txtFullName.Text);
             mpl.Show();
 
         }

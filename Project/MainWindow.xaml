@@ -82,9 +82,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <uc:ControlBars>
-                
-            </uc:ControlBars>
+            <uc:ControlBars></uc:ControlBars>
         </Grid>
         <Grid Grid.Row="1">
             <!--Phần menu-->
@@ -120,6 +118,7 @@
                                     Background="DimGray"      
                                     Margin="0">Sign Up</Button>
                 </DockPanel>
+                <!--////////////////////-->
                 <!--User-->
                 <StackPanel Grid.Row="0" x:Name="UserInfo" Visibility="Collapsed">
                     <materialDesign:PackIcon Margin="10"
@@ -136,7 +135,7 @@
                             >
                         EDIT
                     </Button>
-                    <Button HorizontalAlignment="Center" Width="140" Click="Button_Click">
+                    <Button x:Name="btnMyPlayList" HorizontalAlignment="Center" Width="140" Click="btnMyPlayList_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>
