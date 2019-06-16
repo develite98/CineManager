@@ -1,10 +1,11 @@
-﻿<Window x:Class="ProjectVideo.MyplayList"
+﻿<Window x:Class="ProjectVideo.MyPlayList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectVideo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,9 +15,17 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
-        Title="MyplayList" Height="450" Width="800"
-        WindowStyle="None" >
+        DataContext="{StaticResource MyPlayListVM}"
+        Title="MyPlayList" Height="450" Width="800"
+        WindowStyle="None" 
+        x:Name="MyPlayListView">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=MyPlayListView}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="DarkGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -26,7 +35,7 @@
         <Grid Grid.Row="1">
             <StackPanel Margin="5">
                 <Label Foreground="White" FontSize="20" FontWeight="Bold"> My play list</Label>
-                <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding ListFilm}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -169,13 +178,13 @@
                                                 <materialDesign:PackIcon Kind="Share" Height="25" Width="25"></materialDesign:PackIcon>
                                             </Button>
                                         </WrapPanel>
+                                        <TextBlock x:Name="tbVideoPath" Text="{Binding videoPath}" Visibility="Collapsed" Tag="{Binding ID}"/>
                                     </Grid>
                                 </materialDesign:Flipper.BackContent>
                             </materialDesign:Flipper>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <TextBlock x:Name="txtUserCurrent" Visibility="Collapsed"></TextBlock>
             </StackPanel>
         </Grid>        
     </Grid>

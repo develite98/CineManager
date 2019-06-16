@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +18,19 @@ namespace ProjectVideo
     /// <summary>
     /// Interaction logic for MyplayList.xaml
     /// </summary>
-    public partial class MyplayList : Window
+    public partial class MyPlayList : Window
     {
-        public MyplayList()
+        private string userCurrent;
+        public MyPlayList()
         {
             InitializeComponent();
         }
-        public MyplayList(string userCurrent)
+        public MyPlayList(string userCurrent)
         {
             InitializeComponent();
-            txtUserCurrent.Text = userCurrent;
+            this.userCurrent = userCurrent;
+            var myPlayListVM = MyPlayListView.DataContext as MyPlayListViewModel;
+            myPlayListVM.UserCurrent = userCurrent;
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -37,14 +41,14 @@ namespace ProjectVideo
             {
                 if (textblock.Name == "tbVideoPath")
                 {
-                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString()) // compare index of pathvideo and index button when click (get path of video when click button)
                     {
                         pathVideo = textblock.Text;
                         break;
                     }
                 }
             }
-            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserCurrent.Text);
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo, userCurrent);
             pvf.ShowDialog();
         }
         public IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

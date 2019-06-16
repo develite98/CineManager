@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ProjectVideo.ViewModel
 {
-    class PlayVideoViewModel :BaseViewModel
+    public class PlayVideoViewModel :BaseViewModel
     {
         private string pathVideo;
         public string PathVideo { get { return pathVideo; } set { pathVideo = value; OnPropertyChanged(); } }
@@ -24,7 +24,7 @@ namespace ProjectVideo.ViewModel
         {
             AddMyPlayListCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 var videoTemp = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == PathVideo); // get id video current
-                var userTemp = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.Name == UserCurrent); // get id user current
+                var userTemp = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == UserCurrent); // get id user current
                 var isExistsPlayList = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idUser == userTemp.ID && pl.idVideo == videoTemp.ID).Count();
                 if(isExistsPlayList != 0)
                 {

@@ -7,4 +7,5 @@
     <viewmodel:SignUpViewModel x:Key="SignUpVM"></viewmodel:SignUpViewModel>
     <viewmodel:UserListViewModel x:Key="UserVM"></viewmodel:UserListViewModel>
     <viewmodel:PlayVideoViewModel x:Key="PlayVideoVM"></viewmodel:PlayVideoViewModel>
+    <viewmodel:MyPlayListViewModel x:Key="MyPlayListVM"></viewmodel:MyPlayListViewModel>
 </ResourceDictionary>   

@@ -126,8 +126,8 @@
                                          Kind="AccountCircle"
                                          Height="80"
                                          Width="80"/>
-
-                    <TextBlock x:Name="txtFullName" Margin="10" HorizontalAlignment="Center" Opacity=".8" Text="{Binding FullName}">???</TextBlock>
+                    <TextBlock x:Name="txtUserName" Visibility="Collapsed"></TextBlock>
+                    <TextBlock x:Name="txtFullName" Margin="10" HorizontalAlignment="Center" Opacity=".8">???</TextBlock>
                     <Button x:Name="BtnEditInfo"
                             HorizontalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatButton}" Margin="0 4 0 0"

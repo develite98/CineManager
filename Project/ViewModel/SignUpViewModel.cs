@@ -10,7 +10,7 @@ using ProjectVideo.Models;
 
 namespace ProjectVideo.ViewModel
 {
-    class SignUpViewModel : BaseViewModel
+    public class SignUpViewModel : BaseViewModel
     {
         public ICommand SignUpCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
