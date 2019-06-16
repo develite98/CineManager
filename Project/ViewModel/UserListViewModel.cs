@@ -11,7 +11,7 @@ using ProjectVideo.Models;
 
 namespace ProjectVideo.ViewModel
 {
-    class UserListViewModel: BaseViewModel
+    public class UserListViewModel: BaseViewModel
     {
 
         private ObservableCollection<User> listUser;

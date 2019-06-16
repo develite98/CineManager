@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProjectVideo.View
+namespace ProjectVideo
 {
     /// <summary>
-    /// Interaction logic for UserInfo.xaml
+    /// Interaction logic for AdminManager.xaml
     /// </summary>
-    public partial class UserInfo : Window
+    public partial class AdminManager : Window
     {
-        public UserInfo()
+        public AdminManager()
         {
             InitializeComponent();
         }

@@ -17,8 +17,9 @@ namespace ProjectVideo.ViewModel
         public ObservableCollection<VideoKind> ListFilmByKind { get { return listFilmByKind; } set { listFilmByKind = value; OnPropertyChanged(); } }
         private ObservableCollection<Video> lstFilm;
 
-        private string username = "";
+        
         public string UserName { get; set; }
+        public string FullName { get; set; }
 
         private string videoPath = "";
         public string VideoPath { get { return videoPath; } set { videoPath = value; OnPropertyChanged(); } }
@@ -42,8 +43,9 @@ namespace ProjectVideo.ViewModel
 
                     if (loginViewModel.isLogin)
                     {
-                        UserName = loginViewModel.fullNameUser;
-                        mainWindow = new MainWindow(UserName);
+                        UserName = loginViewModel.UserName;
+                        FullName = loginViewModel.fullNameUser;
+                        mainWindow = new MainWindow(FullName,UserName);
                         mainWindow.Show();
                         p.Close();
                     }

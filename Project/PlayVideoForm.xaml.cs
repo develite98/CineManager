@@ -32,12 +32,12 @@ namespace ProjectVideo
         }
     
 
-        public PlayVideoForm(string path, string fullName)
+        public PlayVideoForm(string path, string userCurrent)
         {
             InitializeComponent();
             // handle parameters
             var playVideoVM = PlayVideoView.DataContext as PlayVideoViewModel;
-            playVideoVM.UserCurrent = fullName;
+            playVideoVM.UserCurrent = userCurrent;
             playVideoVM.PathVideo = path;
             // handle play video
             MoviePlayer.Source = new Uri(handlePathVideo(path), UriKind.Relative);

@@ -30,7 +30,7 @@ namespace ProjectVideo
             lvFilm.Height = this.Height - 127;
         }
 
-        public MainWindow(string UserName)
+        public MainWindow(string FullName, string UserName)
         {
             InitializeComponent();
             this.Height = System.Windows.SystemParameters.WorkArea.Height;
@@ -39,10 +39,11 @@ namespace ProjectVideo
             if (UserName != null)
             {
                 GuesInfo.Visibility = Visibility.Collapsed;
-                if (UserName != "Admin")
+                if (FullName != "Admin")
                 {
                     UserInfo.Visibility = Visibility.Visible;
-                    txtFullName.Text = UserName;
+                    txtFullName.Text = FullName;
+                    txtUserName.Text = UserName;
                 }
                 else
                 {
@@ -130,25 +131,25 @@ namespace ProjectVideo
                     }
                 }
             }
-            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtFullName.Text);
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserName.Text);
             pvf.ShowDialog();
         }
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-            View.UserInfo usf = new View.UserInfo();
+            UserInfo usf = new UserInfo();
             usf.ShowDialog();
         }
 
         private void AminTool_Click(object sender, RoutedEventArgs e)
         {
-            View.AdminManager adm = new View.AdminManager();
+            AdminManager adm = new AdminManager();
             adm.ShowDialog();
         }
 
         private void btnMyPlayList_Click(object sender, RoutedEventArgs e)
         {
-            MyplayList mpl = new MyplayList(txtFullName.Text);
+            MyPlayList mpl = new MyPlayList(txtUserName.Text);
             mpl.Show();
 
         }

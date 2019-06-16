@@ -113,12 +113,13 @@
     <Compile Include="SlashScreen.xaml.cs">
       <DependentUpon>SlashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MyPlayListViewModel.cs" />
     <Compile Include="ViewModel\PlayVideoViewModel.cs" />
-    <Compile Include="View\AdminManager.xaml.cs">
+    <Compile Include="AdminManager.xaml.cs">
       <DependentUpon>AdminManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MyplayList.xaml.cs">
-      <DependentUpon>MyplayList.xaml</DependentUpon>
+    <Compile Include="MyPlayList.xaml.cs">
+      <DependentUpon>MyPlayList.xaml</DependentUpon>
     </Compile>
     <Compile Include="PlayVideoForm.xaml.cs">
       <DependentUpon>PlayVideoForm.xaml</DependentUpon>
@@ -135,7 +136,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SignUpViewModel.cs" />
     <Compile Include="ViewModel\UserListViewModel.cs" />
-    <Compile Include="View\UserInfo.xaml.cs">
+    <Compile Include="UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
@@ -161,11 +162,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AdminManager.xaml">
+    <Page Include="AdminManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MyplayList.xaml">
+    <Page Include="MyPlayList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,7 +186,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserInfo.xaml">
+    <Page Include="UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

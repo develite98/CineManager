@@ -43,18 +43,13 @@ namespace ProjectVideo.ViewModel
             // check user
             int user = DataProvider.Ins.DB.Users.Where(us => us.userName == UserName && us.userPassword == Password).Count();
             //---------------
-            if (admin > 0 || user > 0) // module Admin
+            if (admin > 0 || user > 0) // module Admin, user
             {
                 var temp = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userName && us.userPassword == Password);
                 fullNameUser = temp.Name;
                 isLogin = true;
                 p.Close();
             }
-            //else if (user > 0) // module User
-            //{
-            //    isLogin = true;
-            //    p.Close();
-            //}
             else // Login fail
             {
                 isLogin = false;
