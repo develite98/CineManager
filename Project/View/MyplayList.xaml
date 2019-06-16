@@ -175,6 +175,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <TextBlock x:Name="txtUserCurrent" Visibility="Collapsed"></TextBlock>
             </StackPanel>
         </Grid>        
     </Grid>

@@ -28,5 +28,6 @@ namespace ProjectVideo.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<VideoKind> VideoKinds { get; set; }
         public virtual DbSet<Video> Videos { get; set; }
+        public virtual DbSet<PlayList> PlayLists { get; set; }
     }
 }

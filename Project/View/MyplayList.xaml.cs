@@ -23,6 +23,11 @@ namespace ProjectVideo
         {
             InitializeComponent();
         }
+        public MyplayList(string userCurrent)
+        {
+            InitializeComponent();
+            txtUserCurrent.Text = userCurrent;
+        }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +44,7 @@ namespace ProjectVideo
                     }
                 }
             }
-            PlayVideoForm pvf = new PlayVideoForm(pathVideo);
+            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserCurrent.Text);
             pvf.ShowDialog();
         }
         public IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

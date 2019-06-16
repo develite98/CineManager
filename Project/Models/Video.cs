@@ -11,21 +11,24 @@ namespace ProjectVideo.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Video
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Video()
+        {
+            this.PlayLists = new HashSet<PlayList>();
+        }
+    
         public int ID { get; set; }
         public string videoName { get; set; }
         public Nullable<int> videoKind { get; set; }
         public string describe { get; set; }
         public string poster { get; set; }
         public string videoPath { get; set; }
-
+    
         public virtual VideoKind VideoKind1 { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("{0}", videoName);
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlayList> PlayLists { get; set; }
     }
 }

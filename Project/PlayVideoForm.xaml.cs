@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,6 @@ namespace ProjectVideo
     /// </summary>
     public partial class PlayVideoForm : Window
     {
-        string pathVideo;
         public PlayVideoForm()
         {
             InitializeComponent();
@@ -32,11 +32,15 @@ namespace ProjectVideo
         }
     
 
-        public PlayVideoForm(string path)
+        public PlayVideoForm(string path, string fullName)
         {
             InitializeComponent();
-            this.pathVideo = path;
-            MoviePlayer.Source = new Uri(handlePathVideo(pathVideo), UriKind.Relative);
+            // handle parameters
+            var playVideoVM = PlayVideoView.DataContext as PlayVideoViewModel;
+            playVideoVM.UserCurrent = fullName;
+            playVideoVM.PathVideo = path;
+            // handle play video
+            MoviePlayer.Source = new Uri(handlePathVideo(path), UriKind.Relative);
             MoviePlayer.Volume = (double)SliderVolumes.Value;
             MoviePlayer.Play();
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -55,7 +59,7 @@ namespace ProjectVideo
             return output;
         }
         //----------------------------
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
@@ -69,7 +73,7 @@ namespace ProjectVideo
             MoviePlayer.Pause();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -95,12 +99,12 @@ namespace ProjectVideo
             MoviePlayer.Volume = (double)SliderVolumes.Value;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             slider1.Value = slider1.Value + 40;
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             slider1.Value = slider1.Value - 40;
         }
@@ -130,6 +134,5 @@ namespace ProjectVideo
             ZoomIn.Visibility = Visibility.Visible;
             ZoomOut.Visibility = Visibility.Collapsed;
         }
-
     }
 }

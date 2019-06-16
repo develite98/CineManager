@@ -45,7 +45,7 @@ namespace ProjectVideo.ViewModel
             //---------------
             if (admin > 0 || user > 0) // module Admin
             {
-                var temp = DataProvider.Ins.DB.Users.Where(us => us.userName == userName && us.userPassword == Password).FirstOrDefault();
+                var temp = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userName && us.userPassword == Password);
                 fullNameUser = temp.Name;
                 isLogin = true;
                 p.Close();
