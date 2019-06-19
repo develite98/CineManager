@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -82,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="messageBox.xaml.cs">
+      <DependentUpon>messageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +162,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="messageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SlashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +265,9 @@
       <DependentUpon>Data.edmx</DependentUpon>
       <LastGenOutput>Data.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\br6.jpg" />
+    <Resource Include="Resources\br8.jpg" />
+    <Resource Include="Resources\userImage.jpg" />
     <Content Include="Video\amnhac\MỘT BƯỚC YÊU VẠN DẶM ĐAU - MR. SIRO - OFFICIAL MV.mp4" />
     <Content Include="Video\amnhac\SAO EM VÔ TÌNH - JACK x K-ICM ft. LIAM - OFFICIAL MV 4K.mp4" />
     <Content Include="Video\amnhac\Thương Em Là Điều Anh Không Thể Ngờ %28#TELDAKTN%29 - Noo Phước Thịnh - Official MV.mp4" />

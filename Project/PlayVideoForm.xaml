@@ -18,110 +18,117 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="PlayVideoForm" Height="700" Width="1000"
+        Title="PlayVideoForm" Height="750" Width="1000"
         DataContext="{StaticResource PlayVideoVM}"
         x:Name="PlayVideoView">
     
-    <Grid x:Name="GridMain" Background="Black" Height="700" Opacity=".8">
-        <StackPanel>
+    <Grid x:Name="GridMain" Background="Black" Height="750" Opacity=".8">
+        <StackPanel Height="750">
             <DockPanel>
                 <Button x:Name="btnClose" Margin="5" HorizontalAlignment="Right" Click="btnClose_Click" >
                     <materialDesign:PackIcon Kind="PagePreviousOutline"></materialDesign:PackIcon>
                 </Button>
             </DockPanel>
-            <StackPanel>
-                <MediaElement Stretch="Fill"  x:Name="MoviePlayer"  LoadedBehavior="Manual" Margin="5" Height="500" MediaOpened="MoviePlayer_MediaOpened"/>
-                <Slider
+            <MediaElement Stretch="Fill"  x:Name="MoviePlayer"  LoadedBehavior="Manual" Margin="5" Height="600" MediaOpened="MoviePlayer_MediaOpened"/>
+            <Slider
                     IsMoveToPointEnabled="True"
                       x:Name="slider1"
                       Orientation="Horizontal"
                    
                     Margin="10,0" ValueChanged="Slider1_ValueChanged">
 
-                </Slider>
-                <Grid x:Name="GridTool">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <WrapPanel VerticalAlignment="Center"  Grid.Column="0">
-                        <Button  x:Name="btnAdd" ToolTip="Add to Mylist" HorizontalAlignment="Center" Margin="10" Width="60" Background="Transparent"
+            </Slider>
+            <Grid  x:Name="GridTool">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <WrapPanel VerticalAlignment="Center"  Grid.Column="0">
+                    <Grid>
+                    <Button Visibility="Visible"  x:Name="btnAdd" ToolTip="Thêm vào Mylist" HorizontalAlignment="Center" Margin="10" Width="60" Background="Transparent"
                                  Command="{Binding AddMyPlayListCommand}"
                                  CommandParameter="{Binding ElementName=PlayVideoView}">
-                            <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
-                        </Button>
-                    </WrapPanel>
-                    <WrapPanel HorizontalAlignment="Center" Grid.Column="1">
-                        <Grid>
-                            <Button x:Name="ZoomIn" ToolTip="Cinema Style" Click="Zoom_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
-                                <materialDesign:PackIcon Kind="Airplay" Width="25" Height="25"/>
-
-                            </Button>
-                            <Button x:Name="ZoomOut" Visibility="Collapsed" ToolTip="Normal Style" Click="ZoomOut_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
-                                <materialDesign:PackIcon Kind="ArrowCollapseHorizontal" Width="25" Height="25"/>
-
-                            </Button>
-                        </Grid>
-
-                        <Button x:Name="btnBack" Click="btnBack_Click" ToolTip="" Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
-                            <materialDesign:PackIcon Kind="SkipPreviousCircle" Width="25" Height="25"/>
+                        <materialDesign:PackIcon Kind="Add" Width="25" Height="25"/>
+                    </Button>
+                    <Button Visibility="Collapsed" x:Name="btnCheckAdd"  HorizontalAlignment="Center" Margin="10" Width="60" Background="Transparent"
+                                 Command="{Binding AddMyPlayListCommand}"
+                                 CommandParameter="{Binding ElementName=PlayVideoView}"
+                            ToolTip="Đã thêm vào Mylist">
+                            
+                            <materialDesign:PackIcon Kind="Check" Width="25" Height="25"/>
+                    </Button>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Center" Grid.Column="1">
+                    <Grid>
+                        <Button x:Name="ZoomIn" ToolTip="Cinema Style" Click="Zoom_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
+                            <materialDesign:PackIcon Kind="Airplay" Width="25" Height="25"/>
 
                         </Button>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="42*"/>
-                                <RowDefinition Height="43*"/>
-                            </Grid.RowDefinitions>
-                            <Button Name="PlayBtn"
+                        <Button x:Name="ZoomOut" Visibility="Collapsed" ToolTip="Normal Style" Click="ZoomOut_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
+                            <materialDesign:PackIcon Kind="ArrowCollapseHorizontal" Width="25" Height="25"/>
+
+                        </Button>
+                    </Grid>
+
+                    <Button x:Name="btnBack" Click="btnBack_Click" ToolTip="" Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
+                        <materialDesign:PackIcon Kind="SkipPreviousCircle" Width="25" Height="25"/>
+
+                    </Button>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="42*"/>
+                            <RowDefinition Height="43*"/>
+                        </Grid.RowDefinitions>
+                        <Button Name="PlayBtn"
                                     Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     BorderBrush="#FF09D49D"
                                      Visibility="Collapsed"
                                     HorizontalAlignment="Center" Margin="5"  Width="75" Height="75" Click="PlayBtn_Click" Grid.RowSpan="2">
-                                <Button.Background>
-                                    <RadialGradientBrush>
-                                        <GradientStop Color="Black" Offset="1"/>
-                                        <GradientStop Color="#FF09D4A6" Offset="0.471"/>
-                                    </RadialGradientBrush>
-                                </Button.Background>
-                                <materialDesign:PackIcon Kind="Play" Height="35" Width="35"></materialDesign:PackIcon>
-                            </Button>
-                            <Button Name="PauseBtn"
+                            <Button.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="#FF09D4A6" Offset="0.471"/>
+                                </RadialGradientBrush>
+                            </Button.Background>
+                            <materialDesign:PackIcon Kind="Play" Height="35" Width="35"></materialDesign:PackIcon>
+                        </Button>
+                        <Button Name="PauseBtn"
                                     Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     BorderBrush="#FFD41C09"  
                                     
                                     HorizontalAlignment="Center" Margin="5"  Width="75" Height="75" Click="PauseBtn_Click" Grid.RowSpan="2">
-                                <Button.Background>
-                                    <RadialGradientBrush>
-                                        <GradientStop Color="Black" Offset="1"/>
-                                        <GradientStop Color="#FFD41C09" Offset="0.471"/>
-                                    </RadialGradientBrush>
-                                </Button.Background>
-                                <materialDesign:PackIcon Kind="Pause" Height="35" Width="35"></materialDesign:PackIcon>
-                            </Button>
-
-                        </Grid>
-                        <Button x:Name="btnForward" Click="btnForward_Click" Background="Transparent"  HorizontalAlignment="Center" Margin="5" Width="60">
-                            <materialDesign:PackIcon Kind="SkipNextCircle" Width="25" Height="25"/>
+                            <Button.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="#FFD41C09" Offset="0.471"/>
+                                </RadialGradientBrush>
+                            </Button.Background>
+                            <materialDesign:PackIcon Kind="Pause" Height="35" Width="35"></materialDesign:PackIcon>
                         </Button>
-                        <Button x:Name="ReplayButton" ToolTip="Replay" Click="ReplayButton_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
-                            <materialDesign:PackIcon Kind="Replay" Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
 
-                            </materialDesign:PackIcon>
+                    </Grid>
+                    <Button x:Name="btnForward" Click="btnForward_Click" Background="Transparent"  HorizontalAlignment="Center" Margin="5" Width="60">
+                        <materialDesign:PackIcon Kind="SkipNextCircle" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ReplayButton" ToolTip="Replay" Click="ReplayButton_Click"  Background="Transparent" HorizontalAlignment="Center" Margin="5" Width="60">
+                        <materialDesign:PackIcon Kind="Replay" Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
 
-                        </Button>
-                    </WrapPanel>
-                    <WrapPanel VerticalAlignment="Center" Grid.Column="2">
-                        <Label  VerticalAlignment="Center" Foreground="White">
-                            Volume
-                        </Label>
+                        </materialDesign:PackIcon>
 
-                        <Slider Margin="5" TickFrequency="0.2" Value="0.5" x:Name="SliderVolumes" Foreground="White" VerticalAlignment="Center" Minimum="0" Maximum="1" Width="100" ValueChanged="SliderVolumes_ValueChanged">
+                    </Button>
+                </WrapPanel>
+                <WrapPanel VerticalAlignment="Center" Grid.Column="2">
+                    <Label  VerticalAlignment="Center" Foreground="White">
+                        Volume
+                    </Label>
 
-                        </Slider>
-                    </WrapPanel>
-                </Grid>
-            </StackPanel>
+                    <Slider Margin="5" TickFrequency="0.2" Value="0.5" x:Name="SliderVolumes" Foreground="White" VerticalAlignment="Center" Minimum="0" Maximum="1" Width="100" ValueChanged="SliderVolumes_ValueChanged">
+
+                    </Slider>
+                </WrapPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

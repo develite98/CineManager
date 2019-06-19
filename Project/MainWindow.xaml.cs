@@ -41,12 +41,14 @@ namespace ProjectVideo
                 GuesInfo.Visibility = Visibility.Collapsed;
                 if (FullName != "Admin")
                 {
+                    userInfoTool.Visibility = Visibility.Visible;
                     UserInfo.Visibility = Visibility.Visible;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
                 }
                 else
                 {
+                    adminInfoTool.Visibility = Visibility.Visible;
                     AdminInfo.Visibility = Visibility.Visible;
                 }
             }
@@ -152,6 +154,97 @@ namespace ProjectVideo
             MyPlayList mpl = new MyPlayList(txtUserName.Text);
             mpl.Show();
 
+        }
+
+        private void ShowINFOBTN_Click(object sender, RoutedEventArgs e)
+        {
+            string pathVideo = "";
+            string posterVideo = "";
+            string nameVideo = "";
+            string desVideo = "";
+            var btnClick = (sender) as Button;
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoPoster")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        posterVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoDes")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        desVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoName")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        nameVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbVideoPath")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        pathVideo = textblock.Text;
+                        break;
+                    }
+                }
+            }
+            playVideo.Tag = pathVideo;
+            ImageFilm.Source = new BitmapImage(new Uri(posterVideo, UriKind.Relative));
+            txtNameFilm.Text = nameVideo;
+            txtInfoFilm.Text = desVideo;
+            INFOSHOW.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+        }
+
+        private void INFOSHOW_Click(object sender, RoutedEventArgs e)
+        {
+            GridFilm.Opacity = 0.5;
+            GridFilm.IsEnabled = false;
+        }
+
+        private void BtnBackHome_Click(object sender, RoutedEventArgs e)
+        {
+            GridFilm.Opacity = 1;
+            GridFilm.IsEnabled = true;
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void PlayVideo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn11_Click(object sender, RoutedEventArgs e)
+        {
+            messageBox ms = new messageBox("Thông báo");
+            ms.Show();
         }
     }
 }

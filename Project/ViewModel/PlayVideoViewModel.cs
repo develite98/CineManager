@@ -28,7 +28,8 @@ namespace ProjectVideo.ViewModel
                 var isExistsPlayList = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idUser == userTemp.ID && pl.idVideo == videoTemp.ID).Count();
                 if(isExistsPlayList != 0)
                 {
-                    MessageBox.Show("Video already exists in my playlist!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    messageBox ms = new messageBox("Video already exists in my playlist!");
+                    ms.Show();
                     return;
                 }
                 if (!string.IsNullOrEmpty(videoTemp.ID.ToString()) && !string.IsNullOrEmpty(userTemp.ID.ToString()))
@@ -36,11 +37,13 @@ namespace ProjectVideo.ViewModel
                     PlayList playList = new PlayList() { idUser = userTemp.ID, idVideo = videoTemp.ID };
                     DataProvider.Ins.DB.PlayLists.Add(playList);
                     DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Add success!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    messageBox ms = new messageBox("Add success");
+                    ms.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Add to my playlist fail!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    messageBox ms = new messageBox("Add to my playlist False");
+                    ms.Show();
                 }
             });
         }
