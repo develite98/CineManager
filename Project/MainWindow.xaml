@@ -499,7 +499,8 @@
                         </Grid.RowDefinitions>
                         <Image x:Name="ImageFilm" Source="Resources/br3.jpg" Height="250" Stretch="UniformToFill" />
                         <Button x:Name="playVideo"
-                                Click="PlayVideo_Click"
+                                Click="BtnPlay_Click"
+                                Tag="{Binding ID}"
                                 Grid.Row="0"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
