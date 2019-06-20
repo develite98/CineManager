@@ -235,11 +235,5 @@ namespace ProjectVideo
         {
             this.WindowState = WindowState.Minimized;
         }
-
-        private void Btn11_Click(object sender, RoutedEventArgs e)
-        {
-            messageBox ms = new messageBox("Thông báo");
-            ms.Show();
-        }
     }
 }
