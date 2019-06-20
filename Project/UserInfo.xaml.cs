@@ -21,6 +21,7 @@ namespace ProjectVideo
     /// </summary>
     public partial class UserInfo : Window
     {
+        private string userNameCurrent;
         public UserInfo()
         {
             InitializeComponent();
@@ -29,11 +30,12 @@ namespace ProjectVideo
         public UserInfo(string userName)
         {
             InitializeComponent();
+            userNameCurrent = userName;
             var userViewModel = UserView.DataContext as UserViewModel;
             try
             {
                 var userCurrent = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userName);
-                userViewModel.userNameCurrent = userName;
+                userViewModel.userNameCurrent = userName; // handle in view model
                 
                 // show info user current
                 txtFullName.Text = userCurrent.Name;
@@ -47,7 +49,7 @@ namespace ProjectVideo
 
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordView temp = new ChangePasswordView();
+            ChangePasswordView temp = new ChangePasswordView(userNameCurrent);
             temp.Show();
         }
     }

@@ -9,4 +9,5 @@
     <viewmodel:PlayVideoViewModel x:Key="PlayVideoVM"></viewmodel:PlayVideoViewModel>
     <viewmodel:MyPlayListViewModel x:Key="MyPlayListVM"></viewmodel:MyPlayListViewModel>
     <viewmodel:AdminViewModel x:Key="AdminVM"></viewmodel:AdminViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
 </ResourceDictionary>       
