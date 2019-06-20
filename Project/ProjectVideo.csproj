@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\MyPlayListViewModel.cs" />
     <Compile Include="ViewModel\PlayVideoViewModel.cs" />
     <Compile Include="AdminManager.xaml.cs">
