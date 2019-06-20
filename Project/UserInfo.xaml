@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectVideo"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
@@ -15,9 +16,17 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource UserVM}"
         Title="UserInfo" Height="600" Width="800"
-        WindowStyle="None">
+        WindowStyle="None"
+        x:Name="UserView">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=MyPlayListView}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid RenderTransformOrigin="0.494,0.742">
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/br4.jpg"></ImageBrush>
@@ -50,25 +59,29 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBox Margin="5" Name="txtMasp" materialDesign:HintAssist.Hint="   Họ Tên"  FontSize="20"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Cursor="" TabIndex="0" IsTabStop="False"/>
+                    <TextBox Margin="5" Name="txtFullName" materialDesign:HintAssist.Hint="   Họ Tên"  FontSize="20"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Cursor="" TabIndex="0" IsTabStop="False"
+                      Text="{Binding FullName}"
+                     />
+
                 </Grid>
                 <Grid Grid.Row="2">
-                    <TextBox Margin="5" Name="txtTensp" materialDesign:HintAssist.Hint="   Email" FontSize="20" 
+                    <TextBox Margin="5" Name="txtEmail" materialDesign:HintAssist.Hint="   Email" FontSize="20" 
+                             Text="{Binding Email}"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" TabIndex="0" />
                 </Grid>
                 <Grid Grid.Row="4">
-                    <PasswordBox Margin="5" Name="cbxLoaisp" materialDesign:HintAssist.Hint="   Password" FontSize="20"
-                             TabIndex="1"/>
+                    <TextBox Margin="5" Name="txtPhone" materialDesign:HintAssist.Hint="   Phone" FontSize="20" 
+                             Text="{Binding Phone}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" TabIndex="0" />
                 </Grid>
                 <Grid Grid.Row="6">
-                    <PasswordBox Margin="5" Name="txtSoLuong" materialDesign:HintAssist.Hint="   Re Password" FontSize="20"
-                 
-                             
-                             />
+                    <TextBox Margin="5" Name="txtPay" materialDesign:HintAssist.Hint="   Pay" FontSize="20" 
+                             Text="{Binding Pay}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" TabIndex="0" />
                 </Grid>
                 <Grid Grid.Row="8">
-                    <DatePicker Margin="5" Name="txtDonGia" materialDesign:HintAssist.Hint="   Date" FontSize="20"
+                    <DatePicker Margin="5" Name="BirhtDay" materialDesign:HintAssist.Hint="   Date" FontSize="20"
                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  
                            
                            Grid.ColumnSpan="2"/>
@@ -80,7 +93,7 @@
                         <ColumnDefinition Width="400"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button   Name="btnCapNhat" Content="Cập nhật" FontSize="20" Grid.Column="1" Width="150" VerticalAlignment="Center" TabIndex="5">
+                    <Button   Name="btnCapNhat" Content="Cập nhật" FontSize="20" Grid.Column="1" Width="150" VerticalAlignment="Center" TabIndex="5" Command="{Binding UpdateCommand}" CommandParameter="{Binding ElementName=UserView}">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>

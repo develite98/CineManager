@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectVideo.Models;
+using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,25 @@ namespace ProjectVideo
         public UserInfo()
         {
             InitializeComponent();
+        }
+
+        public UserInfo(string userName)
+        {
+            InitializeComponent();
+            var userViewModel = UserView.DataContext as UserViewModel;
+            try
+            {
+                var userCurrent = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userName);
+                userViewModel.userNameCurrent = userName;
+                
+                // show info user current
+                txtFullName.Text = userCurrent.Name;
+                txtEmail.Text = userCurrent.Email;
+                txtPhone.Text = userCurrent.phoneNumber;
+                txtPay.Text = userCurrent.pay;
+                BirhtDay.Text = userCurrent.birthday;
+            }
+            catch (Exception ex) { }
         }
     }
 }
