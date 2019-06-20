@@ -21,6 +21,7 @@ namespace ProjectVideo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string userCurrent;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,13 +41,14 @@ namespace ProjectVideo
             {
                 GuesInfo.Visibility = Visibility.Collapsed;
                 if (FullName != "Admin")
-                {
+                {        
                     userInfoTool.Visibility = Visibility.Visible;
                     UserInfo.Visibility = Visibility.Visible;
                     adminInfoTool.Visibility = Visibility.Collapsed;
                     AdminInfo.Visibility = Visibility.Collapsed;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
+                    MyPlayList mp = new MyPlayList(txtUserName.Text);
                 }
                 else
                 {
@@ -145,14 +147,16 @@ namespace ProjectVideo
 
         private void AminTool_Click(object sender, RoutedEventArgs e)
         {
-            AdminManager adm = new AdminManager();
-            adm.ShowDialog();
+            adminView.Visibility = Visibility.Visible;
+            filmViewALL.Visibility = Visibility.Collapsed;
         }
 
         private void btnMyPlayList_Click(object sender, RoutedEventArgs e)
         {
-            MyPlayList mpl = new MyPlayList(txtUserName.Text);
-            mpl.Show();
+            //MyPlayList mp = new MyPlayList();
+            //mp.Show();
+            //filmViewALL.Visibility = Visibility.Collapsed;
+            //filmViewMy.Visibility = Visibility.Visible;
 
         }
 
@@ -234,6 +238,36 @@ namespace ProjectVideo
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void BackHome_Click(object sender, RoutedEventArgs e)
+        {
+            
+            adminView.Visibility = Visibility.Collapsed;
+            filmViewALL.Visibility = Visibility.Visible;
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            //if(filmViewALL.Visibility == Visibility.Visible)
+            //{
+            //    btnBack.IsEnabled = false;
+            //}
+            filmViewMy.Visibility = Visibility.Collapsed;
+            adminView.Visibility = Visibility.Collapsed;
+            filmViewALL.Visibility = Visibility.Visible;
+        }
+
+        private void BtnAdmintool_Click(object sender, RoutedEventArgs e)
+        {
+            adminView.Visibility = Visibility.Visible;
+            filmViewALL.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnMyPlaylist_Click_1(object sender, RoutedEventArgs e)
+        {
+            filmViewMy.Visibility = Visibility.Visible;
+            filmViewALL.Visibility = Visibility.Collapsed;
         }
     }
 }

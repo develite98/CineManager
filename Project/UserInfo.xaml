@@ -88,8 +88,6 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Image Name="img" Width="150" Height="100" Grid.Column="1" HorizontalAlignment="Center" />
-
                 </Grid>
             </Grid>
 

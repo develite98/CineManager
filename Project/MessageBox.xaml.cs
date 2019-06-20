@@ -27,7 +27,7 @@ namespace ProjectVideo
         public messageBox(String a)
         {
             InitializeComponent();
-            lbMess.Content = a;
+            lbMess.Text = a;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

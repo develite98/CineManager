@@ -17,11 +17,13 @@ namespace ProjectVideo
     /// <summary>
     /// Interaction logic for AdminManager.xaml
     /// </summary>
-    public partial class AdminManager : Window
+    public partial class AdminManager : UserControl
     {
         public AdminManager()
         {
+
             InitializeComponent();
         }
+
     }
 }

@@ -18,7 +18,7 @@ namespace ProjectVideo
     /// <summary>
     /// Interaction logic for MyplayList.xaml
     /// </summary>
-    public partial class MyPlayList : Window
+    public partial class MyPlayList : UserControl
     {
         private string userCurrent;
         public MyPlayList()

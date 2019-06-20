@@ -214,146 +214,165 @@
 
 
                 <Grid x:Name="GridFilm" Grid.Row="1" VerticalAlignment="Top">
-                    <StackPanel Orientation="Vertical">
-                        <ListBox x:Name="lvFilm" ItemsSource="{Binding ListFilmByKind}"
-                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <Label Content="{Binding kindName}" Foreground="White" FontSize="20" FontFamily="StarsStripes"/>
-                                        <ItemsControl x:Name="LISSS" ItemsSource="{Binding listFilm}"
-                                                        ScrollViewer.HorizontalScrollBarVisibility="auto"
-                                                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <!--<VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>-->
-                                                    <WrapPanel/>
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                            <ItemsControl.Template>
-                                                <ControlTemplate TargetType="{x:Type ItemsControl}">
-                                                    <Grid>
-                                                        <ScrollViewer Name="scrollViewer">
-                                                            <ScrollViewer.Template>
-                                                                <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                                                    <Grid>
-                                                                        <ScrollContentPresenter></ScrollContentPresenter>
-                                                                    </Grid>
-                                                                </ControlTemplate>
-                                                            </ScrollViewer.Template>
-                                                            <ItemsPresenter VerticalAlignment="Center" />
-                                                        </ScrollViewer>
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="auto"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <RepeatButton x:Name="moveLeft"
-                                                                Command="{x:Static ScrollBar.LineLeftCommand}"
-                                                                          Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                                                                          CommandTarget="{Binding ElementName=scrollViewer}"
-                                                                          BorderBrush="{x:Null}"
-                                                                          ClickMode="Hover"
-                                                                    >
-                                                                <materialDesign:PackIcon Kind="ArrowLeftBoldOutline" Foreground="White"></materialDesign:PackIcon>
-                                                                <RepeatButton.Background>
-                                                                    <RadialGradientBrush>
-                                                                        <GradientStop Color="Black" Offset="1"/>
-                                                                        <GradientStop Color="#FFD41C09" Offset="0.471"/>
-                                                                    </RadialGradientBrush>
-                                                                </RepeatButton.Background>
-                                                            </RepeatButton>
-                                                            <RepeatButton x:Name="moveRight" Command="{x:Static ScrollBar.LineRightCommand}"
-                                                                          Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                                                                          CommandTarget="{Binding ElementName=scrollViewer}"
-                                                                          BorderBrush="{x:Null}"
-                                                                          ClickMode="Hover"
-                                                                    Grid.Column="2">
-                                                                <materialDesign:PackIcon Kind="ArrowRightBoldOutline" Foreground="White"></materialDesign:PackIcon>
-                                                                <RepeatButton.Background>
-                                                                    <RadialGradientBrush>
-                                                                        <GradientStop Color="Black" Offset="1"/>
-                                                                        <GradientStop Color="#FFD41C09" Offset="0.471"/>
-                                                                    </RadialGradientBrush>
-                                                                </RepeatButton.Background>
-                                                            </RepeatButton>
-                                                        </Grid>
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                           
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </ControlTemplate>
-                                            </ItemsControl.Template>
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid  Margin="10">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition/>
-                                                            <RowDefinition/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid HorizontalAlignment="Center">
-                                                            <Image Source="{Binding poster}" Width="350" Height="190" Stretch="Fill">
-                                                                <Image.LayoutTransform>
-                                                                    <ScaleTransform/>
-                                                                </Image.LayoutTransform>
-                                                                <Image.Style>
-                                                                    <Style  TargetType="{x:Type Image}">
-                                                                        <Style.Triggers>
-                                                                            <Trigger Property="IsMouseOver" Value="true">
-                                                                                <Trigger.EnterActions>
-                                                                                    <BeginStoryboard>
-                                                                                        <Storyboard>
-                                                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
-                                                                                                                         To="1.05" Duration="0:0:0.2"/>
-                                                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
-                                                                                                                         To="1.05" Duration="0:0:0.2"/>
-                                                                                        </Storyboard>
-                                                                                    </BeginStoryboard>
-                                                                                </Trigger.EnterActions>
-                                                                                <Trigger.ExitActions>
-                                                                                    <BeginStoryboard>
-                                                                                        <Storyboard>
-                                                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
-                                                                                                                         Duration="0:0:0.2"/>
-                                                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
-                                                                                                                         Duration="0:0:0.2"/>
-                                                                                        </Storyboard>
-                                                                                    </BeginStoryboard>
-                                                                                </Trigger.ExitActions>
-                                                                            </Trigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Image.Style>
-                                                            </Image>
-                                                            <Button 
-                                                                x:Name="ShowINFOBTN"
-                                                                Click="ShowINFOBTN_Click"
-                                                                Tag="{Binding ID}"
-                                                                Style="{StaticResource MaterialDesignFloatingActionLightButton}"             
-                                                                Width="100"
-                                                                Height="100" BorderBrush="White" Foreground="#DDFDFDFD">
-                                                                <Button.Background>
-                                                                    <SolidColorBrush Color="#FF06F1F1" Opacity="0.001"/>
-                                                                </Button.Background>
-                                                                <materialDesign:PackIcon Kind="Play" Height="60" Width="60"/>
-                                                            </Button>
-                                                        </Grid>
-                                                        <TextBlock x:Name="tbVideoPath" Text="{Binding videoPath}" Visibility="Collapsed" Tag="{Binding ID}"/>
-                                                        <TextBlock x:Name="tbVideoName" Text="{Binding videoName}" Visibility="Collapsed" Tag="{Binding ID}"/>
-                                                        <TextBlock x:Name="tbVideoPoster" Text="{Binding poster}" Visibility="Collapsed" Tag="{Binding ID}"/>
-                                                        <TextBlock x:Name="tbVideoDes" Text="{Binding describe}" Visibility="Collapsed" Tag="{Binding ID}"/>
-                                                        <Label VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" Foreground="White" Content="{Binding videoName}" Margin="0,0,0,10"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+
+                        <Button Click="BtnBack_Click" Foreground="Red" FontWeight="Bold" BorderThickness="2" x:Name="btnBack" Margin="10 0 0 0" Height="35" Width="auto" Style="{StaticResource MaterialDesignRaisedAccentButton}" Background="{x:Null}" BorderBrush="Red">Home</Button>
+                        
                     </StackPanel>
+                    <Grid Grid.Row="1">
+                        <StackPanel Margin="15" x:Name="adminView" Orientation="Vertical" HorizontalAlignment="Left" Visibility="Collapsed">
+                            <local:AdminManager/>
+                        </StackPanel>
+                        <!-- Show filmm by mylist -->
+                        <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"  x:Name="filmViewMy"  Visibility="Collapsed">
+                            <local:MyPlayList Background="Transparent"/>
+                        </StackPanel>
+                        <!-- Show filmm by all film -->
+                        <StackPanel x:Name="filmViewALL" Orientation="Vertical">
+                            <ListBox x:Name="lvFilm" ItemsSource="{Binding ListFilmByKind}"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="{Binding kindName}" Foreground="White" FontSize="20" FontFamily="StarsStripes"/>
+                                            <ItemsControl x:Name="LISSS" ItemsSource="{Binding listFilm}"
+                                                            ScrollViewer.HorizontalScrollBarVisibility="auto"
+                                                            ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <!--<VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>-->
+                                                        <WrapPanel/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.Template>
+                                                    <ControlTemplate TargetType="{x:Type ItemsControl}">
+                                                        <Grid>
+                                                            <ScrollViewer Name="scrollViewer">
+                                                                <ScrollViewer.Template>
+                                                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                                                        <Grid>
+                                                                            <ScrollContentPresenter></ScrollContentPresenter>
+                                                                        </Grid>
+                                                                    </ControlTemplate>
+                                                                </ScrollViewer.Template>
+                                                                <ItemsPresenter VerticalAlignment="Center" />
+                                                            </ScrollViewer>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <RepeatButton x:Name="moveLeft"
+                                                                    Command="{x:Static ScrollBar.LineLeftCommand}"
+                                                                              Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                                                                              CommandTarget="{Binding ElementName=scrollViewer}"
+                                                                              BorderBrush="{x:Null}"
+                                                                              ClickMode="Hover"
+                                                                        >
+                                                                    <materialDesign:PackIcon Kind="ArrowLeftBoldOutline" Foreground="White"></materialDesign:PackIcon>
+                                                                    <RepeatButton.Background>
+                                                                        <RadialGradientBrush>
+                                                                            <GradientStop Color="Black" Offset="1"/>
+                                                                            <GradientStop Color="#FFD41C09" Offset="0.471"/>
+                                                                        </RadialGradientBrush>
+                                                                    </RepeatButton.Background>
+                                                                </RepeatButton>
+                                                                <RepeatButton x:Name="moveRight" Command="{x:Static ScrollBar.LineRightCommand}"
+                                                                              Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                                                                              CommandTarget="{Binding ElementName=scrollViewer}"
+                                                                              BorderBrush="{x:Null}"
+                                                                              ClickMode="Hover"
+                                                                        Grid.Column="2">
+                                                                    <materialDesign:PackIcon Kind="ArrowRightBoldOutline" Foreground="White"></materialDesign:PackIcon>
+                                                                    <RepeatButton.Background>
+                                                                        <RadialGradientBrush>
+                                                                            <GradientStop Color="Black" Offset="1"/>
+                                                                            <GradientStop Color="#FFD41C09" Offset="0.471"/>
+                                                                        </RadialGradientBrush>
+                                                                    </RepeatButton.Background>
+                                                                </RepeatButton>
+                                                            </Grid>
+                                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                           
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ItemsControl.Template>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid  Margin="10">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid HorizontalAlignment="Center">
+                                                                <Image Source="{Binding poster}" Width="350" Height="190" Stretch="Fill">
+                                                                    <Image.LayoutTransform>
+                                                                        <ScaleTransform/>
+                                                                    </Image.LayoutTransform>
+                                                                    <Image.Style>
+                                                                        <Style  TargetType="{x:Type Image}">
+                                                                            <Style.Triggers>
+                                                                                <Trigger Property="IsMouseOver" Value="true">
+                                                                                    <Trigger.EnterActions>
+                                                                                        <BeginStoryboard>
+                                                                                            <Storyboard>
+                                                                                                <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                             To="1.05" Duration="0:0:0.2"/>
+                                                                                                <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                             To="1.05" Duration="0:0:0.2"/>
+                                                                                            </Storyboard>
+                                                                                        </BeginStoryboard>
+                                                                                    </Trigger.EnterActions>
+                                                                                    <Trigger.ExitActions>
+                                                                                        <BeginStoryboard>
+                                                                                            <Storyboard>
+                                                                                                <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                                                                                             Duration="0:0:0.2"/>
+                                                                                                <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                             Duration="0:0:0.2"/>
+                                                                                            </Storyboard>
+                                                                                        </BeginStoryboard>
+                                                                                    </Trigger.ExitActions>
+                                                                                </Trigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </Image.Style>
+                                                                </Image>
+                                                                <Button 
+                                                                    x:Name="ShowINFOBTN"
+                                                                    Click="ShowINFOBTN_Click"
+                                                                    Tag="{Binding ID}"
+                                                                    Style="{StaticResource MaterialDesignFloatingActionLightButton}"             
+                                                                    Width="100"
+                                                                    Height="100" BorderBrush="White" Foreground="#DDFDFDFD">
+                                                                    <Button.Background>
+                                                                        <SolidColorBrush Color="#FF06F1F1" Opacity="0.001"/>
+                                                                    </Button.Background>
+                                                                    <materialDesign:PackIcon Kind="Play" Height="60" Width="60"/>
+                                                                </Button>
+                                                            </Grid>
+                                                            <TextBlock x:Name="tbVideoPath" Text="{Binding videoPath}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <TextBlock x:Name="tbVideoName" Text="{Binding videoName}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <TextBlock x:Name="tbVideoPoster" Text="{Binding poster}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <TextBlock x:Name="tbVideoDes" Text="{Binding describe}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <Label VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" Foreground="White" Content="{Binding videoName}" Margin="0,0,0,10"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Grid>
             <!--Phần menu-->
@@ -426,7 +445,7 @@
                             HorizontalAlignment="Center"
                             Style="{StaticResource MaterialDesignFlatButton}" 
                             Click="BtnEditInfo_Click"
-                            Content="Chỉnh Sửa"
+                            Content="Edit"
                             />
                         <Button Margin="0 15 0 0"
                             x:Name="btnLogout"
@@ -437,7 +456,7 @@
                             CommandParameter="{Binding ElementName=MainViewWindow}"
                             />
                     </WrapPanel>
-                    <Button  x:Name="btnMyPlayList" HorizontalAlignment="Center" Width="140" Click="btnMyPlayList_Click" Content="Favorite film">
+                    <Button  x:Name="btnMyPlayList" HorizontalAlignment="Center" Width="140" Click="BtnMyPlaylist_Click_1" Content="Favorite film">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>

@@ -24,7 +24,7 @@ namespace ProjectVideo.ViewModel
 
         public AdminViewModel()
         {
-            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            LoadedWindowCommand = new RelayCommand<AdminManager>((p) => { return true; }, (p) => {
                 ListUser = new ObservableCollection<User>(DataProvider.Ins.DB.Users);
                 ListFilm = new ObservableCollection<Video>(DataProvider.Ins.DB.Videos);
             });

@@ -23,15 +23,19 @@ namespace ProjectVideo.ViewModel
 
         public MyPlayListViewModel()
         {
-            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
-                var idUser = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent); // get id user current 
-                var videoTemp = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idUser == idUser.ID); // get the lines where idUser == id user current
-                ListFilm = new ObservableCollection<Video>();
-                foreach (var item in videoTemp)  // insert all video to ListFilm where id = idVideo belong to playlist of user current
+            LoadedWindowCommand = new RelayCommand<MyPlayList>((p) => { return true; }, (p) => {
+                try
                 {
-                    var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.ID == item.idVideo);
-                    ListFilm.Add(video);
+                    var idUser = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent); // get id user current 
+                    var videoTemp = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idUser == idUser.ID); // get the lines where idUser == id user current
+                    ListFilm = new ObservableCollection<Video>();
+                    foreach (var item in videoTemp)  // insert all video to ListFilm where id = idVideo belong to playlist of user current
+                    {
+                        var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.ID == item.idVideo);
+                        ListFilm.Add(video);
+                    }
                 }
+                catch (Exception ex) { }
             });
         }
 
