@@ -62,7 +62,7 @@ namespace ProjectVideo.ViewModel
                     userTemp.birthday = BirthDay.Date.ToString("d");
 
                     DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("The changes will aplies next time you login", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Update success!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 p.Close();
             });

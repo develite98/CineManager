@@ -219,7 +219,7 @@
                                                                                     Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="5" 
                                                                                     BorderBrush="{x:Null}" ToolTip="Xóa video"
                                                                                     Tag="{Binding ID}"
-                                                                                    Click="BtnPlay_Click">
+                                                                                    Click="btnDelete_Click">
                                             <Button.Background>
                                                 <RadialGradientBrush>
                                                     <GradientStop Color="Black" Offset="1"/>

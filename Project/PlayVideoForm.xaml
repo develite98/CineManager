@@ -54,7 +54,7 @@
                     <Button Visibility="Collapsed" x:Name="btnCheckAdd"  HorizontalAlignment="Center" Margin="10" Width="60" Background="Transparent"
                                  Command="{Binding AddMyPlayListCommand}"
                                  CommandParameter="{Binding ElementName=PlayVideoView}"
-                            ToolTip="Đã thêm vào Mylist">
+                                 ToolTip="Đã thêm vào Mylist">
                             
                             <materialDesign:PackIcon Kind="Check" Width="25" Height="25"/>
                     </Button>

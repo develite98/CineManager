@@ -1,4 +1,5 @@
-﻿using ProjectVideo.ViewModel;
+﻿using ProjectVideo.Models;
+using ProjectVideo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +67,23 @@ namespace ProjectVideo
                         yield return childOfChild;
                 }
             }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var btnClick = sender as Button;
+            int.TryParse(btnClick.Tag.ToString(), out int idVideoTag);
+            var myPlayList = MyPlayListView.DataContext as MyPlayListViewModel;
+            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == myPlayList.UserCurrent);
+            var playListVideo = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idUser == user.ID);
+
+            foreach(var video in playListVideo)
+            {
+                var videoDel = DataProvider.Ins.DB.PlayLists.Where(pl => pl.idVideo == idVideoTag).SingleOrDefault();
+                DataProvider.Ins.DB.PlayLists.Remove(videoDel);
+            }
+            DataProvider.Ins.DB.SaveChanges();
+            MessageBox.Show("Delete video from my playlist success(refresh page to see the result)!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
