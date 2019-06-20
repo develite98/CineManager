@@ -1,4 +1,5 @@
-﻿using ProjectVideo.ViewModel;
+﻿using ProjectVideo.Models;
+using ProjectVideo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,15 @@ namespace ProjectVideo
             dispatcherTimer.Tick += new EventHandler(timer_tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
-
+            // handle check my playlist
+            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent);
+            var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == path);
+            var playList = DataProvider.Ins.DB.PlayLists.FirstOrDefault(pl => pl.idUser == user.ID && pl.idVideo == video.ID);
+            if(playList != null)
+            {
+                btnCheckAdd.Visibility = Visibility.Visible;
+                btnAdd.Visibility = Visibility.Collapsed;
+            }
         }
 
         // handle path video

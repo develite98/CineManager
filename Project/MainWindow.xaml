@@ -221,6 +221,7 @@
                     <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
 
                         <Button Click="BtnBack_Click" Foreground="Red" FontWeight="Bold" BorderThickness="2" x:Name="btnBack" Margin="10 0 0 0" Height="35" Width="auto" Style="{StaticResource MaterialDesignRaisedAccentButton}" Background="{x:Null}" BorderBrush="Red">Home</Button>
+                        <Button Click="btnRefresh_Click" Foreground="Red" FontWeight="Bold" BorderThickness="2" x:Name="btnRefresh" Margin="10 0 0 0" Height="35" Width="auto" Style="{StaticResource MaterialDesignRaisedAccentButton}" Background="{x:Null}" BorderBrush="Red" Visibility="Collapsed">Refresh</Button>
                         
                     </StackPanel>
                     <Grid Grid.Row="1">
