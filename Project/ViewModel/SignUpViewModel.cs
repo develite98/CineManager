@@ -34,6 +34,8 @@ namespace ProjectVideo.ViewModel
         public DateTime BirthDay { get { return birthday; } set { birthday = value; OnPropertyChanged(); } }
         public string Visa { get { return visa; } set { visa = value; OnPropertyChanged(); } }
 
+        public bool isSignup = false;
+
         public SignUpViewModel()
         {
             SignUpCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { SignUp(p); });
@@ -65,6 +67,7 @@ namespace ProjectVideo.ViewModel
                 DataProvider.Ins.DB.Users.Add(user);
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show("Register success!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                isSignup = true;
                 p.Close();
                 Login loginView = new Login();
                 loginView.ShowDialog();

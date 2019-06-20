@@ -117,6 +117,7 @@
     <Compile Include="SlashScreen.xaml.cs">
       <DependentUpon>SlashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\MyPlayListViewModel.cs" />
     <Compile Include="ViewModel\PlayVideoViewModel.cs" />
     <Compile Include="AdminManager.xaml.cs">
@@ -139,7 +140,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SignUpViewModel.cs" />
-    <Compile Include="ViewModel\UserListViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>

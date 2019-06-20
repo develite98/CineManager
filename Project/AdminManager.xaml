@@ -8,6 +8,7 @@
         Title="AdminManager" Height="450" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:ProjectVideo.UserControlS"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -15,17 +16,24 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource AdminVM}"
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterScreen"
+        x:Name="AdminView"
         >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=AdminView}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="#FF252222" Opacity="0.9">
         <TabControl TabStripPlacement="Left">
             <TabItem Height="40" Width="100"  Header="User Manager">
                 <Grid Background="LightGray">
                     <StackPanel Margin="10" Grid.Row="1">
                         <Label Content="LIST USER:" FontWeight="Bold" FontSize="20"></Label>
-                        <ItemsControl Grid.IsSharedSizeScope="True" Margin="20">
+                        <ItemsControl Grid.IsSharedSizeScope="True" Margin="20" ItemsSource="{Binding ListUser}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border
@@ -47,10 +55,10 @@
                                                 <!--tên User-->
                                                 <TextBlock
                                                     FontWeight="Bold"
-                                                    Text="" />
+                                                    Text="{Binding Name}" />
                                                 <!--email-->
                                                 <TextBlock
-                                                    Text="" />
+                                                    Text="{Binding Email}" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>
@@ -71,6 +79,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
             <TabItem Height="40" Width="100"  Header="Video Manager">
                 <Grid Background="LightGray" >
                     <Label Content="LIST FILM:"  FontWeight="Bold" FontSize="20"  Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Top"  Width="500" Margin="50,13,134,0"/>
@@ -80,15 +89,16 @@
                       CanUserSortColumns="True"
                       CanUserAddRows="False"
                       AutoGenerateColumns="False"
+                      ItemsSource="{Binding ListFilm}"
                       >
                         <DataGrid.Background>
                             <SolidColorBrush Color="#FFFAFAFA" Opacity="0.5"/>
                         </DataGrid.Background>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Tên Phim" Width="200" FontSize="20"/>
-                            <DataGridTextColumn Header="Thể loại"  FontSize="20" />
-                            <DataGridTextColumn Header="Description" FontSize="20" />
+                            <DataGridTextColumn Header="Tên Phim" Width="200" FontSize="20" Binding="{Binding videoName}"/>
+                            <DataGridTextColumn Header="Thể loại"  FontSize="20" Binding="{Binding videoKind}" />
+                            <DataGridTextColumn Header="Description" FontSize="20" Binding="{Binding describe}"/>
 
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>

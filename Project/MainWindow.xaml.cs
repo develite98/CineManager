@@ -43,6 +43,8 @@ namespace ProjectVideo
                 {
                     userInfoTool.Visibility = Visibility.Visible;
                     UserInfo.Visibility = Visibility.Visible;
+                    adminInfoTool.Visibility = Visibility.Collapsed;
+                    AdminInfo.Visibility = Visibility.Collapsed;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
                 }
@@ -50,6 +52,8 @@ namespace ProjectVideo
                 {
                     adminInfoTool.Visibility = Visibility.Visible;
                     AdminInfo.Visibility = Visibility.Visible;
+                    userInfoTool.Visibility = Visibility.Collapsed;
+                    UserInfo.Visibility = Visibility.Collapsed;
                 }
             }
             lvFilm.Height = this.Height - 127;
@@ -105,41 +109,37 @@ namespace ProjectVideo
             }
         }
 
-        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //foreach (var grid in FindVisualChildren<Grid>(this))
-            //{
-            //    if (grid.Name == "GridInfo")
-            //    {
-            //        /*   Your code here  */
-            //        grid.Visibility = Visibility.Visible;
-            //    }
-            //}
-        }
-
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-            // handle click video move to form play film
-            string pathVideo = "";
-            var btnClick = (sender) as Button;
-            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            // check logged in
+            if (!string.IsNullOrEmpty(txtFullName.Text) && !string.IsNullOrEmpty(txtUserName.Text))
             {
-                if (textblock.Name == "tbVideoPath")
+                // handle click video move to form play film
+                string pathVideo = "";
+                var btnClick = (sender) as Button;
+                foreach (var textblock in FindVisualChildren<TextBlock>(this))
                 {
-                    if (textblock.Tag.ToString() == btnClick.Tag.ToString()) // search textblock contain ID film and compare with btnClick contain ID film
-                    {                                                       // it mean is got the film is pressed
-                        pathVideo = textblock.Text;
-                        break;
+                    if (textblock.Name == "tbVideoPath")
+                    {
+                        if (textblock.Tag.ToString() == btnClick.Tag.ToString()) // search textblock contain ID film and compare with btnClick contain ID film
+                        {                                                       // it mean is got the film is pressed
+                            pathVideo = textblock.Text;
+                            break;
+                        }
                     }
                 }
+                PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserName.Text);
+                pvf.ShowDialog();
             }
-            PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserName.Text);
-            pvf.ShowDialog();
+            else
+            {
+                MessageBox.Show("Must be login to continue!", "Suggestions", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-            UserInfo usf = new UserInfo();
+            UserInfo usf = new UserInfo(txtUserName.Text);
             usf.ShowDialog();
         }
 
@@ -207,7 +207,7 @@ namespace ProjectVideo
                     }
                 }
             }
-            playVideo.Tag = pathVideo;
+            playVideo.Tag = btnClick.Tag.ToString();
             ImageFilm.Source = new BitmapImage(new Uri(posterVideo, UriKind.Relative));
             txtNameFilm.Text = nameVideo;
             txtInfoFilm.Text = desVideo;
@@ -234,17 +234,6 @@ namespace ProjectVideo
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
-        }
-
-        private void PlayVideo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn11_Click(object sender, RoutedEventArgs e)
-        {
-            messageBox ms = new messageBox("Thông báo");
-            ms.Show();
         }
     }
 }

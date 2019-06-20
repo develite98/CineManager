@@ -53,9 +53,15 @@ namespace ProjectVideo
         // handle path video
         private string handlePathVideo(string path)
         {
-            string ap = System.IO.Path.GetFullPath(path);
-            int s = ap.LastIndexOf("bin");
-            string output = ap.Remove(s, 10);
+            string output = "";
+            try
+            {
+                string ap = System.IO.Path.GetFullPath(path);
+                int s = ap.LastIndexOf("bin");
+                output = ap.Remove(s, 10);
+            }catch(Exception ex){
+
+            }
             return output;
         }
         //----------------------------
