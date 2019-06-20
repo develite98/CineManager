@@ -44,5 +44,11 @@ namespace ProjectVideo
             }
             catch (Exception ex) { }
         }
+
+        private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordView temp = new ChangePasswordView();
+            temp.Show();
+        }
     }
 }

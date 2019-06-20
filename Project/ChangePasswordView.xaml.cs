@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace ProjectVideo
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for ChangePasswordView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class ChangePasswordView : Window
     {
-        public Login()
+        public ChangePasswordView()
         {
             InitializeComponent();
-        }
-
-
-        private void BtnFPW_Click(object sender, RoutedEventArgs e)
-        {
-            ForgotPasswordView temp = new ForgotPasswordView();
-            temp.Show();
         }
     }
 }

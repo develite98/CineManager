@@ -15,20 +15,25 @@ using System.Windows.Shapes;
 namespace ProjectVideo
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for ForgotPasswordView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class ForgotPasswordView : Window
     {
-        public Login()
+        public ForgotPasswordView()
         {
             InitializeComponent();
         }
 
-
-        private void BtnFPW_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ForgotPasswordView temp = new ForgotPasswordView();
-            temp.Show();
+            Tab2.IsSelected = true;
+            Tab2.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Tab3.IsSelected = true;
+            Tab3.Visibility = Visibility.Visible;
         }
     }
 }

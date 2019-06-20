@@ -21,7 +21,7 @@ namespace ProjectVideo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string userCurrent;
+        MyPlayList mp = new MyPlayList();
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace ProjectVideo
                     AdminInfo.Visibility = Visibility.Collapsed;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
-                    MyPlayList mp = new MyPlayList(txtUserName.Text);
+                    mp = new MyPlayList(txtUserName.Text);
                 }
                 else
                 {
@@ -266,8 +266,70 @@ namespace ProjectVideo
 
         private void BtnMyPlaylist_Click_1(object sender, RoutedEventArgs e)
         {
+            mp = new MyPlayList(txtUserName.Text);
             filmViewMy.Visibility = Visibility.Visible;
             filmViewALL.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnTCam_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[0]);
+        }
+
+        private void BtnHDong_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[2]);
+        }
+
+        private void BtnVTuong_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[3]);
+        }
+
+        private void BtnPLuu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[4]);
+        }
+
+        private void BtnANhac_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[5]);
+        }
+
+        private void BtnHHuoc_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[6]);
+        }
+
+        private void BtnLSu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[7]);
+        }
+
+        private void BtnHHinh_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[8]);
+        }
+
+        private void BtnKDi_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[9]);
+
+        }
+
+        private void BtnTThoai_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[10]);
+        }
+
+        private void BtnHSu_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[11]);
+        }
+
+        private void BtnHBi_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lvFilm.ScrollIntoView(lvFilm.Items[11]);
         }
     }
 }

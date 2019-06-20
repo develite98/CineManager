@@ -224,6 +224,8 @@
                         
                     </StackPanel>
                     <Grid Grid.Row="1">
+                        <StackPanel>
+                        </StackPanel>
                         <StackPanel Margin="15" x:Name="adminView" Orientation="Vertical" HorizontalAlignment="Left" Visibility="Collapsed">
                             <local:AdminManager/>
                         </StackPanel>
@@ -233,7 +235,43 @@
                         </StackPanel>
                         <!-- Show filmm by all film -->
                         <StackPanel x:Name="filmViewALL" Orientation="Vertical">
-                            <ListBox x:Name="lvFilm" ItemsSource="{Binding ListFilmByKind}"
+                            <Grid>
+                                <Grid.Resources>
+                                    <Style x:Key="myBtn" TargetType="{x:Type Button}">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Margin" Value="0" />
+                                        <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Height" Value="40"/>
+                                        <Setter Property="BorderBrush" Value="Red" />
+                                        <Setter Property="Foreground" Value="Red" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                             To="1.3" Duration="0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                                                                             Duration="0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </Style.Triggers>
+
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ListBox x:Name="lvFilm" Grid.Column="0" ItemsSource="{Binding ListFilmByKind}"
                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
                                 <ListBox.ItemTemplate>
@@ -371,6 +409,69 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
+                                <StackPanel Margin="0 50 0 0" Grid.Column="1">
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnTCam" MouseEnter="BtnTCam_MouseEnter" Content="Tình Cảm">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnHDong" MouseEnter="BtnHDong_MouseEnter" Content="Hành Động">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnVTuong" MouseEnter="BtnVTuong_MouseEnter" Content="Viễn Tưởng">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnPLuu" MouseEnter="BtnPLuu_MouseEnter" Content="Phiêu Lưu">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnANhac" MouseEnter="BtnANhac_MouseEnter" Content="Âm Nhạc">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnHHuoc" MouseEnter="BtnHHuoc_MouseEnter" Content="Hài Hước">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnLSu" MouseEnter="BtnLSu_MouseEnter" Content="Lịch Sử">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnHHinh" MouseEnter="BtnHHinh_MouseEnter" Content="Hoạt Hình">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnKDi" MouseEnter="BtnKDi_MouseEnter" Content="Kinh Dị">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnTThoai" MouseEnter="BtnTThoai_MouseEnter" Content="Thần Thoại">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnHSu" MouseEnter="BtnHSu_MouseEnter" Content="Hình Sự">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button Style="{StaticResource myBtn}" x:Name="btnHBi" MouseEnter="BtnHBi_MouseEnter" Content="Huyền Bí">
+                                        <Button.LayoutTransform>
+                                            <ScaleTransform/>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
                         </StackPanel>
                     </Grid>
                 </Grid>
