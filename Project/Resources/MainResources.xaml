@@ -8,4 +8,5 @@
     <viewmodel:UserListViewModel x:Key="UserVM"></viewmodel:UserListViewModel>
     <viewmodel:PlayVideoViewModel x:Key="PlayVideoVM"></viewmodel:PlayVideoViewModel>
     <viewmodel:MyPlayListViewModel x:Key="MyPlayListVM"></viewmodel:MyPlayListViewModel>
-</ResourceDictionary>   
+    <viewmodel:AdminViewModel x:Key="AdminVM"></viewmodel:AdminViewModel>
+</ResourceDictionary>       
