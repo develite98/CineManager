@@ -27,9 +27,13 @@ namespace ProjectVideo.ViewModel
         public ICommand LoginCommand { get; set; }
         public ICommand LoadedWindowCommand { get; set; }
 
+        public ICommand SignUpCommand { get; set; }
+
+        public ICommand LogoutCommand { get; set; }
+
         public MainViewModel()
         {
-            // handle login - logout
+            // handle login
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 Login loginView = new Login();
@@ -64,6 +68,34 @@ namespace ProjectVideo.ViewModel
                 //    mainWindow.Show();
                 //    p.Close();
                 //}
+            });
+
+            SignUpCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (p == null)
+                    return;
+                p.Hide();
+                SignUp signUpView = new SignUp();
+                signUpView.ShowDialog();
+                var signUpViewModel = signUpView.DataContext as SignUpViewModel;
+                MainWindow mainWindow = null;
+                if (!signUpViewModel.isSignup)   //check signup fail
+                {
+                    mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    p.Close();
+                }
+            });
+
+            LogoutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                Login loginView = new Login();
+                var loginViewModel = loginView.DataContext as LoginViewModel;
+                loginViewModel.UserName = null;
+                loginViewModel.Password = null;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                p.Close();
             });
 
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
