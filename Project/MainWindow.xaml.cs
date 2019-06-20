@@ -139,7 +139,7 @@ namespace ProjectVideo
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-            UserInfo usf = new UserInfo();
+            UserInfo usf = new UserInfo(txtUserName.Text);
             usf.ShowDialog();
         }
 
