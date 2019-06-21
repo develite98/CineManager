@@ -41,9 +41,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="videoName" Type="nvarchar" MaxLength="255" />
           <Property Name="videoKind" Type="int" />
+          <Property Name="liked" Type="int" />
           <Property Name="describe" Type="nvarchar" MaxLength="255" />
           <Property Name="poster" Type="nvarchar" MaxLength="255" />
           <Property Name="videoPath" Type="nvarchar" MaxLength="255" />
+          <Property Name="trailerPath" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <Association Name="fk_user_playlist">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -138,6 +140,8 @@
           <Property Name="videoPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VideoKind1" Relationship="Self.fk_videokind_video" FromRole="Videos" ToRole="VideoKind" />
           <NavigationProperty Name="PlayLists" Relationship="VideoSupplyManagementModel.fk_video_playlist" FromRole="Video" ToRole="PlayList" />
+          <Property Name="liked" Type="Int32" />
+          <Property Name="trailerPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="fk_videokind_video">
           <End Role="VideoKind" Type="Self.VideoKind" Multiplicity="0..1" />
@@ -235,6 +239,8 @@
           <EntitySetMapping Name="Videos">
             <EntityTypeMapping TypeName="VideoSupplyManagementModel.Video">
               <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="trailerPath" ColumnName="trailerPath" />
+                <ScalarProperty Name="liked" ColumnName="liked" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="videoName" ColumnName="videoName" />
                 <ScalarProperty Name="videoKind" ColumnName="videoKind" />

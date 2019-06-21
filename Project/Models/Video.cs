@@ -26,6 +26,8 @@ namespace ProjectVideo.Models
         public string describe { get; set; }
         public string poster { get; set; }
         public string videoPath { get; set; }
+        public Nullable<int> liked { get; set; }
+        public string trailerPath { get; set; }
     
         public virtual VideoKind VideoKind1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
