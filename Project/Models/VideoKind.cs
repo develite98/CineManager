@@ -26,7 +26,6 @@ namespace ProjectVideo.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Video> Videos { get; set; }
-
         public ObservableCollection<Video> listFilm { get; set; }
     }
 }

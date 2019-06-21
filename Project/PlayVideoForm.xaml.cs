@@ -31,7 +31,7 @@ namespace ProjectVideo
             slider1.Value = MoviePlayer.Position.TotalSeconds;
            
         }
-    
+
 
         public PlayVideoForm(string path, string userCurrent)
         {
@@ -49,13 +49,17 @@ namespace ProjectVideo
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             // handle check my playlist
-            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent);
-            var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == path);
-            var playList = DataProvider.Ins.DB.PlayLists.FirstOrDefault(pl => pl.idUser == user.ID && pl.idVideo == video.ID);
-            if(playList != null)
+            if (userCurrent != "Admin")
             {
-                btnCheckAdd.Visibility = Visibility.Visible;
-                btnAdd.Visibility = Visibility.Collapsed;
+                var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent);
+                var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == path);
+                var playList = DataProvider.Ins.DB.PlayLists.FirstOrDefault(pl => pl.idUser == user.ID && pl.idVideo == video.ID);
+            
+                if (playList != null)
+                {
+                    btnCheckAdd.Visibility = Visibility.Visible;
+                    btnAdd.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
@@ -76,15 +80,19 @@ namespace ProjectVideo
         //----------------------------
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
+            miniBtnPause.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
+            miniBtnPlay.Visibility = Visibility.Collapsed;
             MoviePlayer.Play();
         }
 
         private void PauseBtn_Click(object sender, RoutedEventArgs e)
         {
+            miniBtnPlay.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Collapsed;
+            miniBtnPause.Visibility = Visibility.Collapsed;
             MoviePlayer.Pause();
         }
 
@@ -134,15 +142,19 @@ namespace ProjectVideo
 
         private void Zoom_Click(object sender, RoutedEventArgs e)
         {
+            GridTool.Visibility = Visibility.Collapsed;
+            GridToolMini.Visibility = Visibility.Visible;
             this.WindowState = WindowState.Maximized;
-            GridMain.Height = this.Height;
-            MoviePlayer.Height = this.Height - 165;
+            GridMain.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+            MoviePlayer.Height = this.Height - 150;
             ZoomIn.Visibility = Visibility.Collapsed;
             ZoomOut.Visibility = Visibility.Visible;
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
+            GridTool.Visibility = Visibility.Visible;
+            GridToolMini.Visibility = Visibility.Collapsed;
             this.WindowState = WindowState.Normal;
             MoviePlayer.Height = 500;
 

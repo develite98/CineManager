@@ -57,6 +57,8 @@ namespace ProjectVideo
                     AdminInfo.Visibility = Visibility.Visible;
                     userInfoTool.Visibility = Visibility.Collapsed;
                     UserInfo.Visibility = Visibility.Collapsed;
+                    txtFullName.Text = FullName;
+                    txtUserName.Text = UserName;
                 }
             }
             lvFilm.Height = this.Height - 127;
@@ -115,7 +117,7 @@ namespace ProjectVideo
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
             // check logged in
-            if (!string.IsNullOrEmpty(txtFullName.Text) && !string.IsNullOrEmpty(txtUserName.Text))
+            if ((!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtFullName.Text)))
             {
                 // handle click video move to form play film
                 string pathVideo = "";
@@ -131,6 +133,7 @@ namespace ProjectVideo
                         }
                     }
                 }
+                trailerFilm.Stop();
                 PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserName.Text);
                 pvf.ShowDialog();
             }
@@ -163,6 +166,7 @@ namespace ProjectVideo
 
         private void ShowINFOBTN_Click(object sender, RoutedEventArgs e)
         {
+            string trailerPath = "";
             string pathVideo = "";
             string posterVideo = "";
             string nameVideo = "";
@@ -200,6 +204,19 @@ namespace ProjectVideo
                         break;
                     }
                 }
+
+
+            }
+            foreach (var textblock in FindVisualChildren<TextBlock>(this))
+            {
+                if (textblock.Name == "tbTrailerPath")
+                {
+                    if (textblock.Tag.ToString() == btnClick.Tag.ToString())
+                    {
+                        trailerPath = textblock.Text;
+                        break;
+                    }
+                }
             }
             foreach (var textblock in FindVisualChildren<TextBlock>(this))
             {
@@ -212,11 +229,13 @@ namespace ProjectVideo
                     }
                 }
             }
+            trailerFilm.Stop();
             playVideo.Tag = btnClick.Tag.ToString();
-            ImageFilm.Source = new BitmapImage(new Uri(posterVideo, UriKind.Relative));
+            trailerFilm.Source = new Uri(handlePathVideo(trailerPath), UriKind.Relative);
             txtNameFilm.Text = nameVideo;
             txtInfoFilm.Text = desVideo;
             INFOSHOW.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            trailerFilm.Play();
         }
 
         private void INFOSHOW_Click(object sender, RoutedEventArgs e)
@@ -227,6 +246,7 @@ namespace ProjectVideo
 
         private void BtnBackHome_Click(object sender, RoutedEventArgs e)
         {
+            trailerFilm.Stop();
             GridFilm.Opacity = 1;
             GridFilm.IsEnabled = true;
         }
@@ -243,7 +263,7 @@ namespace ProjectVideo
 
         private void BackHome_Click(object sender, RoutedEventArgs e)
         {
-            
+            charVIEW.Visibility = Visibility.Collapsed;
             adminView.Visibility = Visibility.Collapsed;
             filmViewALL.Visibility = Visibility.Visible;
         }
@@ -254,6 +274,7 @@ namespace ProjectVideo
             //{
             //    btnBack.IsEnabled = false;
             //}
+            charVIEW.Visibility = Visibility.Collapsed;
             filmViewMy.Visibility = Visibility.Collapsed;
             adminView.Visibility = Visibility.Collapsed;
             filmViewALL.Visibility = Visibility.Visible;
@@ -261,6 +282,7 @@ namespace ProjectVideo
 
         private void BtnAdmintool_Click(object sender, RoutedEventArgs e)
         {
+            charVIEW.Visibility = Visibility.Collapsed;
             adminView.Visibility = Visibility.Visible;
             filmViewALL.Visibility = Visibility.Collapsed;
         }
@@ -333,6 +355,7 @@ namespace ProjectVideo
             lvFilm.ScrollIntoView(lvFilm.Items[11]);
         }
 
+
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == txtUserName.Text);
@@ -340,6 +363,31 @@ namespace ProjectVideo
             MainViewWindow.Close();
             mwd.ShowDialog();
 
+
+        }
+        private string handlePathVideo(string path)
+        {
+            string output = "";
+            try
+            {
+                string ap = System.IO.Path.GetFullPath(path);
+                int s = ap.LastIndexOf("bin");
+                output = ap.Remove(s, 10);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return output;
+        }
+
+        private void ChartTool_Click(object sender, RoutedEventArgs e)
+        {
+            adminView.Visibility = Visibility.Collapsed;
+            charVIEW.Visibility = Visibility.Visible;
+            filmViewALL.Visibility = Visibility.Collapsed;
         }
     }
+
+    
 }
