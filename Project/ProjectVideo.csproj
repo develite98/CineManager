@@ -123,6 +123,9 @@
     <Compile Include="SlashScreen.xaml.cs">
       <DependentUpon>SlashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateVideoAdmin.xaml.cs">
+      <DependentUpon>UpdateVideoAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ForgotPasswordViewModel.cs" />
@@ -148,6 +151,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SignUpViewModel.cs" />
+    <Compile Include="ViewModel\UpdateVideoViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
@@ -204,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateVideoAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

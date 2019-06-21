@@ -44,7 +44,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <!--Xóa user-->
-                                            <Button Background="Transparent">
+                                            <Button x:Name="btnDeleteUser" Background="Transparent" Click="btnDeleteUser_Click" Tag="{Binding ID}">
                                                 <materialDesign:PackIcon Kind="DeleteCircle"/>
                                             </Button>
                                             <StackPanel
@@ -78,7 +78,7 @@
                 </Grid>
             </TabItem>
             
-            <TabItem Height="40" Width="100"  Header="Video Manager">
+            <TabItem Height="40" Width="100"  Header="Video Manager" x:Name="VideoManagement">
                 <Grid Background="LightGray" >
                     <Label Content="LIST FILM:"  FontWeight="Bold" FontSize="20"  Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Top"  Width="500" Margin="50,13,134,0"/>
                     <DataGrid Name="dgV" Margin="50 50 50 30" IsReadOnly="True" 
@@ -94,15 +94,18 @@
                         </DataGrid.Background>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Tên Phim" Width="200" FontSize="20" Binding="{Binding videoName}"/>
-                            <DataGridTextColumn Header="Thể loại"  FontSize="20" Binding="{Binding videoKind}" />
+                            <DataGridTextColumn Header="ID" Width="20" FontSize="20" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Name Video" Width="200" FontSize="20" Binding="{Binding videoName}"/>
+                            <DataGridTextColumn Header="Category"  FontSize="20" Binding="{Binding videoKind}" />
                             <DataGridTextColumn Header="Description" FontSize="20" Binding="{Binding describe}"/>
 
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Xóa" Name="Delete"/>
-                                <MenuItem Header="Cập nhật" Name="Update"/>
+                                <MenuItem Header="Delete" Name="Delete" Click="Delete_Click">
+                                </MenuItem>
+                                <MenuItem Header="Update" Name="Update" Click="Update_Click">
+                                </MenuItem>
                             </ContextMenu>
                         </DataGrid.ContextMenu>
                     </DataGrid>

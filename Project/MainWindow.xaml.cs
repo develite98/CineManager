@@ -40,7 +40,7 @@ namespace ProjectVideo
             if (UserName != null)
             {
                 GuesInfo.Visibility = Visibility.Collapsed;
-                if (FullName != "Admin")
+                if (FullName != "Admin") // user
                 {        
                     userInfoTool.Visibility = Visibility.Visible;
                     UserInfo.Visibility = Visibility.Visible;
@@ -51,12 +51,13 @@ namespace ProjectVideo
                     txtUserName.Text = UserName;
                     MyPlayList mp = new MyPlayList(txtUserName.Text);
                 }
-                else
+                else // admin
                 {
                     adminInfoTool.Visibility = Visibility.Visible;
                     AdminInfo.Visibility = Visibility.Visible;
                     userInfoTool.Visibility = Visibility.Collapsed;
                     UserInfo.Visibility = Visibility.Collapsed;
+                    btnRefresh.Visibility = Visibility.Visible;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
                 }

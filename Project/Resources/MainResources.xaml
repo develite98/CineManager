@@ -11,4 +11,5 @@
     <viewmodel:AdminViewModel x:Key="AdminVM"></viewmodel:AdminViewModel>
     <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
     <viewmodel:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodel:ForgotPasswordViewModel>
+    <viewmodel:UpdateVideoViewModel x:Key="UpdateVideoVM"></viewmodel:UpdateVideoViewModel>
 </ResourceDictionary>       
