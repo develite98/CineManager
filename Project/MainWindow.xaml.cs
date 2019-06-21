@@ -130,6 +130,7 @@ namespace ProjectVideo
                         }
                     }
                 }
+                trailerFilm.Stop();
                 PlayVideoForm pvf = new PlayVideoForm(pathVideo, txtUserName.Text);
                 pvf.ShowDialog();
             }
@@ -211,11 +212,13 @@ namespace ProjectVideo
                     }
                 }
             }
+            trailerFilm.Stop();
             playVideo.Tag = btnClick.Tag.ToString();
-            ImageFilm.Source = new BitmapImage(new Uri(posterVideo, UriKind.Relative));
+            trailerFilm.Source = new Uri(handlePathVideo(pathVideo), UriKind.Relative);
             txtNameFilm.Text = nameVideo;
             txtInfoFilm.Text = desVideo;
             INFOSHOW.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            trailerFilm.Play();
         }
 
         private void INFOSHOW_Click(object sender, RoutedEventArgs e)
@@ -226,6 +229,7 @@ namespace ProjectVideo
 
         private void BtnBackHome_Click(object sender, RoutedEventArgs e)
         {
+            trailerFilm.Stop();
             GridFilm.Opacity = 1;
             GridFilm.IsEnabled = true;
         }
@@ -331,5 +335,23 @@ namespace ProjectVideo
         {
             lvFilm.ScrollIntoView(lvFilm.Items[11]);
         }
+
+        private string handlePathVideo(string path)
+        {
+            string output = "";
+            try
+            {
+                string ap = System.IO.Path.GetFullPath(path);
+                int s = ap.LastIndexOf("bin");
+                output = ap.Remove(s, 10);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return output;
+        }
     }
+
+    
 }

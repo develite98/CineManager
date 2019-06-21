@@ -67,15 +67,19 @@ namespace ProjectVideo
         //----------------------------
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
+            miniBtnPause.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
+            miniBtnPlay.Visibility = Visibility.Collapsed;
             MoviePlayer.Play();
         }
 
         private void PauseBtn_Click(object sender, RoutedEventArgs e)
         {
+            miniBtnPlay.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Collapsed;
+            miniBtnPause.Visibility = Visibility.Collapsed;
             MoviePlayer.Pause();
         }
 
@@ -125,15 +129,19 @@ namespace ProjectVideo
 
         private void Zoom_Click(object sender, RoutedEventArgs e)
         {
+            GridTool.Visibility = Visibility.Collapsed;
+            GridToolMini.Visibility = Visibility.Visible;
             this.WindowState = WindowState.Maximized;
-            GridMain.Height = this.Height;
-            MoviePlayer.Height = this.Height - 165;
+            GridMain.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+            MoviePlayer.Height = this.Height - 150;
             ZoomIn.Visibility = Visibility.Collapsed;
             ZoomOut.Visibility = Visibility.Visible;
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
+            GridTool.Visibility = Visibility.Visible;
+            GridToolMini.Visibility = Visibility.Collapsed;
             this.WindowState = WindowState.Normal;
             MoviePlayer.Height = 500;
 

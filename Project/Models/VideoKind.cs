@@ -20,13 +20,12 @@ namespace ProjectVideo.Models
         {
             this.Videos = new HashSet<Video>();
         }
-
+    
         public int ID { get; set; }
         public string kindName { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Video> Videos { get; set; }
-
         public ObservableCollection<Video> listFilm { get; set; }
     }
 }

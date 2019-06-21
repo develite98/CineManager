@@ -224,7 +224,62 @@
                         
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <StackPanel>
+                        <StackPanel Visibility="Visible" Background="DarkGray">
+                            <ListBox ItemsSource="{Binding ListFilmByKind}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <ItemsControl ItemsSource="{Binding listFilm}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal"></StackPanel>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                            <StackPanel Margin="10,10,10,80" VerticalAlignment="Bottom">
+                                                                <Border Name="br" Margin="3,10,3,10"  CornerRadius="5" 
+                                                                    Background="White"
+                                                                        
+                                                                    Width="20" BorderBrush="White"  
+                                                                    BorderThickness="3" 
+                                                                    Height="{Binding liked}">
+                                                                    <Border.Triggers>
+                                                                        <EventTrigger RoutedEvent="Border.Loaded">
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation From="0"  
+                                                                                 Storyboard.TargetName="br" 
+                                                     Storyboard.TargetProperty="(FrameworkElement.Height)" 
+                                                                                  Duration="0:0:02.0">
+
+                                                                                    </DoubleAnimation>
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </EventTrigger>
+                                                                    </Border.Triggers>
+                                                                </Border>
+                                                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"
+                                                       FontFamily="Latha" Text="{Binding liked}">
+                                                                    <TextBlock.RenderTransform>
+                                                                        <TranslateTransform Y="-30"/>
+                                                                    </TextBlock.RenderTransform>
+                                                                </TextBlock>
+                                                                <TextBlock HorizontalAlignment="Center" Foreground="Blue"
+                                                       FontWeight="Bold" FontFamily="Latha" 
+                                                       Text="{Binding videoName}">
+                                                                    <TextBlock.RenderTransform>
+                                                                        <TranslateTransform Y="-20"/>
+                                                                    </TextBlock.RenderTransform>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </StackPanel>
                         <StackPanel Margin="15" x:Name="adminView" Orientation="Vertical" HorizontalAlignment="Left" Visibility="Collapsed">
                             <local:AdminManager/>
@@ -234,7 +289,7 @@
                             <local:MyPlayList Background="Transparent"/>
                         </StackPanel>
                         <!-- Show filmm by all film -->
-                        <StackPanel x:Name="filmViewALL" Orientation="Vertical">
+                        <StackPanel x:Name="filmViewALL" Orientation="Vertical" Visibility="Collapsed">
                             <Grid>
                                 <Grid.Resources>
                                     <Style x:Key="myBtn" TargetType="{x:Type Button}">
@@ -350,7 +405,7 @@
                                                                 <RowDefinition/>
                                                             </Grid.RowDefinitions>
                                                             <Grid HorizontalAlignment="Center">
-                                                                <Image Source="{Binding poster}" Width="350" Height="190" Stretch="Fill">
+                                                                <Image Source="{Binding poster}"  Width="350" Height="190" Stretch="Fill">
                                                                     <Image.LayoutTransform>
                                                                         <ScaleTransform/>
                                                                     </Image.LayoutTransform>
@@ -397,9 +452,10 @@
                                                                 </Button>
                                                             </Grid>
                                                             <TextBlock x:Name="tbVideoPath" Text="{Binding videoPath}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <TextBlock x:Name="tbTrailerPath" Text="{Binding trailerPath}" Visibility="Collapsed" Tag="{Binding ID}"/>
                                                             <TextBlock x:Name="tbVideoName" Text="{Binding videoName}" Visibility="Collapsed" Tag="{Binding ID}"/>
                                                             <TextBlock x:Name="tbVideoPoster" Text="{Binding poster}" Visibility="Collapsed" Tag="{Binding ID}"/>
-                                                            <TextBlock x:Name="tbVideoDes" Text="{Binding describe}" Visibility="Collapsed" Tag="{Binding ID}"/>
+                                                            <TextBlock x:Name="tbVideoDes" Text="{Binding liked}" Visibility="Collapsed" Tag="{Binding ID}"/>
                                                             <Label VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Center" Foreground="White" Content="{Binding videoName}" Margin="0,0,0,10"/>
                                                         </Grid>
                                                     </DataTemplate>
@@ -619,7 +675,9 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Image x:Name="ImageFilm" Source="Resources/br3.jpg" Height="250" Stretch="UniformToFill" />
+                        <MediaElement x:Name="trailerFilm" Source="Resources/br3.jpg" LoadedBehavior="Manual" Height="250" Stretch="UniformToFill">
+                            
+                        </MediaElement>
                         <Button x:Name="playVideo"
                                 Click="BtnPlay_Click"
                                 Tag="{Binding ID}"
