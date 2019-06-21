@@ -38,6 +38,28 @@
                     Margin="10,0" ValueChanged="Slider1_ValueChanged">
 
             </Slider>
+            <Grid>
+            <Grid  VerticalAlignment="Bottom" x:Name="GridToolMini" Visibility="Collapsed">
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="zoomOut" Margin="5"  Click="ZoomOut_Click">
+                        <materialDesign:PackIcon Kind="ArrowCollapseHorizontal"/>
+                    </Button>
+                    <Button x:Name="btnBackmini" Click="btnBack_Click" ToolTip=""  HorizontalAlignment="Center" Margin="5" >
+                        <materialDesign:PackIcon Kind="SkipPreviousCircle" />
+                    </Button>
+                    <Grid>
+                        <Button x:Name="miniBtnPlay" Margin="5" Visibility="Collapsed" Click="PlayBtn_Click">
+                            <materialDesign:PackIcon Kind="Play"></materialDesign:PackIcon>
+                        </Button>
+                        <Button x:Name="miniBtnPause" Margin="5" Click="PauseBtn_Click" >
+                            <materialDesign:PackIcon Kind="Pause" ></materialDesign:PackIcon>
+                        </Button>
+                    </Grid>
+                    <Button x:Name="btnForwardmini" Click="btnForward_Click"  HorizontalAlignment="Center" Margin="5" >
+                        <materialDesign:PackIcon Kind="SkipNextCircle" />
+                    </Button>
+                </WrapPanel>
+            </Grid>
 
             <Grid  x:Name="GridTool">
                 <Grid.ColumnDefinitions>
@@ -131,7 +153,7 @@
                         </Slider>
                     </WrapPanel>
                 </Grid>
-            
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

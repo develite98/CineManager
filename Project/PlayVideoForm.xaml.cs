@@ -31,7 +31,7 @@ namespace ProjectVideo
             slider1.Value = MoviePlayer.Position.TotalSeconds;
            
         }
-    
+
 
         public PlayVideoForm(string path, string userCurrent)
         {
@@ -49,13 +49,17 @@ namespace ProjectVideo
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             // handle check my playlist
-            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent);
-            var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == path);
-            var playList = DataProvider.Ins.DB.PlayLists.FirstOrDefault(pl => pl.idUser == user.ID && pl.idVideo == video.ID);
-            if(playList != null)
+            if (userCurrent != "Admin")
             {
-                btnCheckAdd.Visibility = Visibility.Visible;
-                btnAdd.Visibility = Visibility.Collapsed;
+                var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == userCurrent);
+                var video = DataProvider.Ins.DB.Videos.FirstOrDefault(vd => vd.videoPath == path);
+                var playList = DataProvider.Ins.DB.PlayLists.FirstOrDefault(pl => pl.idUser == user.ID && pl.idVideo == video.ID);
+            
+                if (playList != null)
+                {
+                    btnCheckAdd.Visibility = Visibility.Visible;
+                    btnAdd.Visibility = Visibility.Collapsed;
+                }
             }
         }
 

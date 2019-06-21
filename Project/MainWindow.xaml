@@ -225,11 +225,12 @@
                         
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <StackPanel Visibility="Visible" Background="DarkGray">
+                        <StackPanel x:Name="charVIEW" Visibility="Collapsed" Background="Transparent">
                             <ListBox ItemsSource="{Binding ListFilmByKind}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
+                                            <Label Content="{Binding kindName}" FontSize="15" Foreground="White"></Label>
                                             <ItemsControl ItemsSource="{Binding listFilm}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
@@ -249,18 +250,18 @@
                                                                         <EventTrigger RoutedEvent="Border.Loaded">
                                                                             <BeginStoryboard>
                                                                                 <Storyboard>
-                                                                                    <DoubleAnimation From="0"  
-                                                                                 Storyboard.TargetName="br" 
-                                                     Storyboard.TargetProperty="(FrameworkElement.Height)" 
-                                                                                  Duration="0:0:02.0">
+                                                                                <DoubleAnimation From="0"  
+                                                                                     Storyboard.TargetName="br" 
+                                                                                                     Storyboard.TargetProperty="(FrameworkElement.Height)" 
+                                                                                      Duration="0:0:02.0">
 
-                                                                                    </DoubleAnimation>
+                                                                                </DoubleAnimation>
                                                                                 </Storyboard>
                                                                             </BeginStoryboard>
                                                                         </EventTrigger>
                                                                     </Border.Triggers>
                                                                 </Border>
-                                                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"
+                                                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Foreground="Red"
                                                        FontFamily="Latha" Text="{Binding liked}">
                                                                     <TextBlock.RenderTransform>
                                                                         <TranslateTransform Y="-30"/>
@@ -290,7 +291,7 @@
                             <local:MyPlayList Background="Transparent"/>
                         </StackPanel>
                         <!-- Show filmm by all film -->
-                        <StackPanel x:Name="filmViewALL" Orientation="Vertical" Visibility="Collapsed">
+                        <StackPanel x:Name="filmViewALL" Orientation="Vertical" Visibility="Visible">
                             <Grid>
                                 <Grid.Resources>
                                     <Style x:Key="myBtn" TargetType="{x:Type Button}">
@@ -632,7 +633,7 @@
                             <ImageBrush x:Name="imageAdmin" ImageSource="/Resources/userImage.jpg"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                    <TextBlock Margin="10" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Opacity=".8"><Run Text="Admin"/></TextBlock>
+                    <TextBlock x:Name="txtAdminName" Margin="10" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Opacity=".8" >Admin</TextBlock>
                     
                 </WrapPanel>
                 <StackPanel Grid.Row="1" x:Name="adminInfoTool" Visibility="Collapsed">
@@ -652,6 +653,18 @@
                         <WrapPanel>
                             <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center"/>
                             <Label Foreground="White" Content="Admin Tool"/>
+                        </WrapPanel>
+                    </Button>
+                    <Button x:Name="ChartTool" Click="ChartTool_Click" Margin="5" HorizontalAlignment="Center" Width="150">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF00D69C" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <WrapPanel>
+                            <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center"/>
+                            <Label Foreground="White" Content="Chart"/>
                         </WrapPanel>
                     </Button>
                 </StackPanel>
