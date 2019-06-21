@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,13 @@ namespace ProjectVideo
         public ChangePasswordView()
         {
             InitializeComponent();
+        }
+
+        public ChangePasswordView(string userNameCurrent)
+        {
+            InitializeComponent();
+            var userCurrent = ChangePassView.DataContext as ChangePasswordViewModel;
+            userCurrent.userNameCurrent = userNameCurrent; // handle in view model
         }
     }
 }

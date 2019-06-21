@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectVideo.Models;
+using ProjectVideo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,14 +28,18 @@ namespace ProjectVideo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Tab2.IsSelected = true;
-            Tab2.Visibility = Visibility.Visible;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Tab3.IsSelected = true;
-            Tab3.Visibility = Visibility.Visible;
+            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == txtUserName.Text);
+            if ( user != null && user.Email == txtEmail.Text)
+            {
+                Tab2.IsSelected = true;
+                Tab2.Visibility = Visibility.Visible;
+                var userTemp = ForgotPassView.DataContext as ForgotPasswordViewModel;
+                userTemp.userName = txtUserName.Text;
+            }
+            else
+            {
+                MessageBox.Show("User name or Email is incorrect!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

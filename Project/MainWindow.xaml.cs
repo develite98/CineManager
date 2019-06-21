@@ -1,4 +1,5 @@
-﻿using ProjectVideo.ViewModel;
+﻿using ProjectVideo.Models;
+using ProjectVideo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace ProjectVideo
     /// </summary>
     public partial class MainWindow : Window
     {
-        MyPlayList mp = new MyPlayList();
         public MainWindow()
         {
             InitializeComponent();
@@ -46,9 +46,10 @@ namespace ProjectVideo
                     UserInfo.Visibility = Visibility.Visible;
                     adminInfoTool.Visibility = Visibility.Collapsed;
                     AdminInfo.Visibility = Visibility.Collapsed;
+                    btnRefresh.Visibility = Visibility.Visible;
                     txtFullName.Text = FullName;
                     txtUserName.Text = UserName;
-                    mp = new MyPlayList(txtUserName.Text);
+                    MyPlayList mp = new MyPlayList(txtUserName.Text);
                 }
                 else
                 {
@@ -270,7 +271,7 @@ namespace ProjectVideo
 
         private void BtnMyPlaylist_Click_1(object sender, RoutedEventArgs e)
         {
-            mp = new MyPlayList(txtUserName.Text);
+            //MyPlayList mp = new MyPlayList(txtUserName.Text);
             filmViewMy.Visibility = Visibility.Visible;
             filmViewALL.Visibility = Visibility.Collapsed;
         }
@@ -336,20 +337,15 @@ namespace ProjectVideo
             lvFilm.ScrollIntoView(lvFilm.Items[11]);
         }
 
-        private string handlePathVideo(string path)
-        {
-            string output = "";
-            try
-            {
-                string ap = System.IO.Path.GetFullPath(path);
-                int s = ap.LastIndexOf("bin");
-                output = ap.Remove(s, 10);
-            }
-            catch (Exception ex)
-            {
 
-            }
-            return output;
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            var user = DataProvider.Ins.DB.Users.FirstOrDefault(us => us.userName == txtUserName.Text);
+            MainWindow mwd = new MainWindow(user.Name, txtUserName.Text);
+            MainViewWindow.Close();
+            mwd.ShowDialog();
+
+
         }
     }
 
